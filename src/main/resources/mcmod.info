@@ -1,14 +1,14 @@
 [
 {
   "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "name": "Chroma RGB Minecraft MOD",
+  "description": "This MOD adds Chroma RGB to Minecraft events",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["tgraupmann"],
+  "credits": "Minecraft Forge Developers for their support and Tim Graupmann",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
