@@ -1,14 +1,14 @@
 [
 {
-  "modid": "occmod",
-  "name": "Chroma RGB Minecraft MOD",
-  "description": "This MOD adds Chroma RGB to Minecraft events",
-  "version": "${0.1}",
-  "mcversion": "${1.11.2}",
+  "modid": "examplemod",
+  "name": "Example Mod",
+  "description": "Example placeholder mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["tgraupmann"],
-  "credits": "Minecraft Forge Developers for their support and Tim Graupmann",
+  "authorList": ["ExampleDude"],
+  "credits": "The Forge and FML guys, for making this example",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
