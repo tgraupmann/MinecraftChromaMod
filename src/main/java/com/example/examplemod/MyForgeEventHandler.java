@@ -68,7 +68,6 @@ public class MyForgeEventHandler {
 		}
 
 		LivingEntity entityLiving = event.getEntityLiving();
-		System.out.println("handleLivingDeathEvent: "+entityLiving.getClass());
 		
 		if (event.getEntityLiving() instanceof BatEntity) {
 			System.out.println("Bat died");
