@@ -6,6 +6,8 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 * Install [JDK 1.8 or better](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
+* Install the latest MinecraftForge server and client using the [Windows Installer for 1.12](https://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.12.2.html)
+
 
 **Upgrade Gradle to 5.6.1 or better**
 
