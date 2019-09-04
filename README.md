@@ -1,4 +1,8 @@
-# Quick Setup
+# Minecraft Chroma Mod
+
+This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays `Chroma RGB` effects for various game events.
+
+## Quick Setup
 
 * Install [JDK 1.8 or better](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
@@ -29,3 +33,7 @@ gradlew eclipse
 ```
 gradlew runClient
 ```
+
+## Support
+
+Contact `Tim Graupmann#0611` on Discord for mod support.
