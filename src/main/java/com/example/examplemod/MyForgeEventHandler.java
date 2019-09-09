@@ -47,6 +47,20 @@ public class MyForgeEventHandler {
 
 	private static boolean sChromaInitialized = false;
 
+	private void setupBaseAnimation(String device) {
+		if (sChromaInitialized) {
+			int ground = sChromaAnimationAPI.getRGB(64, 32, 0);
+
+			String baseLayer = getAnimationPath() + "Blank_" + device + ".chroma";
+			sChromaAnimationAPI.closeAnimationName(baseLayer);
+			sChromaAnimationAPI.fillZeroColorAllFramesName(baseLayer, ground);
+
+			String idleAnimation = "Idle_" + device + ".chroma";
+			sChromaAnimationAPI.copyAnimationName(baseLayer, idleAnimation);
+			sChromaAnimationAPI.setIdleAnimationName(idleAnimation);
+		}
+	}
+
 	public void init() {
 
 		sChromaAnimationAPI = JChromaSDK.getInstance();
@@ -58,11 +72,12 @@ public class MyForgeEventHandler {
 		}
 
 		if (sChromaInitialized) {
-			sChromaAnimationAPI.setIdleAnimationName(getAnimationPath() + "BaseEffect_ChromaLink.chroma");
-			sChromaAnimationAPI.setIdleAnimationName(getAnimationPath() + "BaseEffect_Headset.chroma");
-			sChromaAnimationAPI.setIdleAnimationName(getAnimationPath() + "BaseEffect_Keyboard.chroma");
-			sChromaAnimationAPI.setIdleAnimationName(getAnimationPath() + "BaseEffect_Mouse.chroma");
-			sChromaAnimationAPI.setIdleAnimationName(getAnimationPath() + "BaseEffect_Mousepad.chroma");
+			setupBaseAnimation("ChromaLink");
+			setupBaseAnimation("Headset");
+			setupBaseAnimation("Keyboard");
+			setupBaseAnimation("Keypad");
+			setupBaseAnimation("Mouse");
+			setupBaseAnimation("Mousepad");
 			sChromaAnimationAPI.useIdleAnimations(true);
 		}
 		
@@ -72,7 +87,7 @@ public class MyForgeEventHandler {
 	private String getAnimationPath() {
 		String cd = System.getProperty("user.dir");
 		//System.out.println("********* getAnimationPath: cd="+cd);
-		String path = cd + "\\..\\src\\main\\resources\\";
+		String path = cd + "\\..\\src\\main\\resources\\Animations\\";
 		//System.out.println("********* getAnimationPath: path="+path);
 		return path;
 	}
@@ -154,6 +169,70 @@ public class MyForgeEventHandler {
 		}
 	}
 
+	private void setupDoorClose() {
+		if (sChromaInitialized) {
+			String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
+			String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
+			sChromaAnimationAPI.closeAnimationName(baseLayer);
+			sChromaAnimationAPI.closeAnimationName(layer2);
+
+			int frameCount = sChromaAnimationAPI.getFrameCountName(layer2);
+			sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
+
+			sChromaAnimationAPI.copyNonZeroAllKeysAllFramesName(layer2, baseLayer);
+
+			sChromaAnimationAPI.reverseAllFramesName(layer2);
+			sChromaAnimationAPI.addNonZeroAllKeysAllFramesName(layer2, baseLayer);
+
+			sChromaAnimationAPI.trimEndFramesName(baseLayer, 9);
+			sChromaAnimationAPI.insertDelayName(baseLayer, 8, 10);
+			sChromaAnimationAPI.fadeEndFramesName(baseLayer, 5);
+
+			int color1 = sChromaAnimationAPI.getRGB(60,40,20);
+			int color2 = sChromaAnimationAPI.getRGB(170,102,15);
+			sChromaAnimationAPI.multiplyNonZeroTargetColorLerpAllFramesName(baseLayer, color1, color2);
+
+			sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 0, 48, 0);
+
+			sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+
+			sChromaAnimationAPI.playAnimationName(baseLayer, false);
+		}
+	}
+
+	private void setupDoorOpen() {
+		if (sChromaInitialized) {
+			String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
+			String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
+			sChromaAnimationAPI.closeAnimationName(baseLayer);
+			sChromaAnimationAPI.closeAnimationName(layer2);
+
+			int frameCount = sChromaAnimationAPI.getFrameCountName(layer2);
+			sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
+
+			sChromaAnimationAPI.copyNonZeroAllKeysAllFramesName(layer2, baseLayer);
+
+			sChromaAnimationAPI.reverseAllFramesName(layer2);
+			sChromaAnimationAPI.addNonZeroAllKeysAllFramesName(layer2, baseLayer);
+
+			sChromaAnimationAPI.trimEndFramesName(baseLayer, 9);
+			sChromaAnimationAPI.insertDelayName(baseLayer, 8, 10);
+			sChromaAnimationAPI.fadeEndFramesName(baseLayer, 5);
+
+			int color1 = sChromaAnimationAPI.getRGB(60,40,20);
+			int color2 = sChromaAnimationAPI.getRGB(170,102,15);
+			sChromaAnimationAPI.multiplyNonZeroTargetColorLerpAllFramesName(baseLayer, color1, color2);
+
+			sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 0, 48, 0);
+
+			sChromaAnimationAPI.reverseAllFramesName(baseLayer);
+
+			sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+
+			sChromaAnimationAPI.playAnimationName(baseLayer, false);
+		}
+	}
+
 	@SubscribeEvent
 	public void handleRightClickBlock(RightClickBlock event) {
 		String threadName = Thread.currentThread().getName();
@@ -180,16 +259,16 @@ public class MyForgeEventHandler {
 								System.out.println("Door is open");
 								playAnimationName("OpenDoor_ChromaLink.chroma", false);
 								playAnimationName("OpenDoor_Headset.chroma", false);
-								playAnimationName("OpenDoor_Keyboard.chroma", false);
 								playAnimationName("OpenDoor_Mouse.chroma", false);
 								playAnimationName("OpenDoor_Mousepad.chroma", false);
+								setupDoorOpen();
 							} else {
 								System.out.println("Door is closed");
 								playAnimationReverseName("OpenDoor_ChromaLink.chroma", false);
 								playAnimationReverseName("OpenDoor_Headset.chroma", false);
-								playAnimationReverseName("OpenDoor_Keyboard.chroma", false);
 								playAnimationReverseName("OpenDoor_Mouse.chroma", false);
 								playAnimationReverseName("OpenDoor_Mousepad.chroma", false);
+								setupDoorClose();
 							}
 						}
 
