@@ -839,7 +839,8 @@ public class ChromaEffects {
         String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
-        sChromaAnimationAPI.fillRandomColorsAllFramesName(baseLayer);
+        sChromaAnimationAPI.fillRandomColorsBlackAndWhiteAllFramesName(baseLayer);
+        sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect11Headset()
@@ -847,7 +848,8 @@ public class ChromaEffects {
         String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
-        sChromaAnimationAPI.fillRandomColorsAllFramesName(baseLayer);
+        sChromaAnimationAPI.fillRandomColorsBlackAndWhiteAllFramesName(baseLayer);
+        sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect11Mousepad()
@@ -855,7 +857,8 @@ public class ChromaEffects {
         String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
-        sChromaAnimationAPI.fillRandomColorsAllFramesName(baseLayer);
+        sChromaAnimationAPI.fillRandomColorsBlackAndWhiteAllFramesName(baseLayer);
+        sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect11Mouse()
@@ -863,7 +866,8 @@ public class ChromaEffects {
         String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
-        sChromaAnimationAPI.fillRandomColorsAllFramesName(baseLayer);
+        sChromaAnimationAPI.fillRandomColorsBlackAndWhiteAllFramesName(baseLayer);
+        sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect12()
