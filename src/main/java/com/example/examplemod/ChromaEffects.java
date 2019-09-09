@@ -3,9 +3,9 @@ package com.example.examplemod;
 import com.razer.java.JChromaSDK;
 
 public class ChromaEffects {
-    private static JChromaSDK sChromaAnimationAPI;
+    protected static JChromaSDK sChromaAnimationAPI = null;
 
-    private String getAnimationPath() {
+    protected static String getAnimationPath() {
         String cd = System.getProperty("user.dir");
         //System.out.println("********* getAnimationPath: cd="+cd);
         String path = cd + "\\..\\src\\main\\resources\\Animations\\";
@@ -13,9 +13,9 @@ public class ChromaEffects {
         return path;
     }
 
-    void showEffect1()
+    public static void showEffect1()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int ground = sChromaAnimationAPI.getRGB(150, 100, 60);
@@ -25,9 +25,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect1ChromaLink()
+    public static void showEffect1ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(150, 100, 60);
@@ -36,9 +36,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect1Headset()
+    public static void showEffect1Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Headset.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(150, 100, 60);
@@ -47,9 +47,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect1Mousepad()
+    public static void showEffect1Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(150, 100, 60);
@@ -58,9 +58,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect1Mouse()
+    public static void showEffect1Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(150, 100, 60);
@@ -69,10 +69,10 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect2()
+    public static void showEffect2()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Block4_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Block4_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -94,9 +94,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect2ChromaLink()
+    public static void showEffect2ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
@@ -105,9 +105,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect2Headset()
+    public static void showEffect2Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Headset.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
@@ -116,9 +116,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect2Mousepad()
+    public static void showEffect2Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
@@ -127,9 +127,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect2Mouse()
+    public static void showEffect2Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
@@ -138,10 +138,10 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect3()
+    public static void showEffect3()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Sword1_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Sword1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -163,9 +163,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect3ChromaLink()
+    public static void showEffect3ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(255, 255, 245);
@@ -174,9 +174,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect3Headset()
+    public static void showEffect3Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Headset.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(255, 255, 245);
@@ -185,9 +185,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect3Mousepad()
+    public static void showEffect3Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(255, 255, 245);
@@ -196,9 +196,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect3Mouse()
+    public static void showEffect3Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(255, 255, 245);
@@ -207,10 +207,10 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect4()
+    public static void showEffect4()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Block3_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Block3_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -230,9 +230,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect4ChromaLink()
+    public static void showEffect4ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         sChromaAnimationAPI.reverseAllFramesName(baseLayer);
@@ -242,9 +242,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect4Headset()
+    public static void showEffect4Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Headset.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         sChromaAnimationAPI.reverseAllFramesName(baseLayer);
@@ -254,9 +254,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect4Mousepad()
+    public static void showEffect4Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         sChromaAnimationAPI.reverseAllFramesName(baseLayer);
@@ -266,9 +266,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect4Mouse()
+    public static void showEffect4Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         sChromaAnimationAPI.reverseAllFramesName(baseLayer);
@@ -278,11 +278,11 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect5()
+    public static void showEffect5()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Bow1_Keyboard.chroma";
-        String layer3 = getAnimationPath() + "Animations/Fireball1_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Bow1_Keyboard.chroma";
+        String layer3 = getAnimationPath()+"Fireball1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.closeAnimationName(layer3);
@@ -309,9 +309,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect5ChromaLink()
+    public static void showEffect5ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -324,9 +324,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect5Headset()
+    public static void showEffect5Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -339,9 +339,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect5Mousepad()
+    public static void showEffect5Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -354,9 +354,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect5Mouse()
+    public static void showEffect5Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -369,11 +369,11 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect6()
+    public static void showEffect6()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Train1_Keyboard.chroma";
-        String layer3 = getAnimationPath() + "Animations/Train2_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Train1_Keyboard.chroma";
+        String layer3 = getAnimationPath()+"Train2_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.closeAnimationName(layer3);
@@ -392,9 +392,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect6ChromaLink()
+    public static void showEffect6ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -407,9 +407,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect6Headset()
+    public static void showEffect6Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -422,9 +422,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect6Mousepad()
+    public static void showEffect6Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -437,9 +437,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect6Mouse()
+    public static void showEffect6Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -452,14 +452,14 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect7()
+    public static void showEffect7()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Block3_Keyboard.chroma";
-        String layer3 = getAnimationPath() + "Animations/Reticle1_Keyboard.chroma";
-        String layer4 = getAnimationPath() + "Animations/Reticle2_Keyboard.chroma";
-        String layer5 = getAnimationPath() + "Animations/Reticle3_Keyboard.chroma";
-        String layer6 = getAnimationPath() + "Animations/Reticle4_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Block3_Keyboard.chroma";
+        String layer3 = getAnimationPath()+"Reticle1_Keyboard.chroma";
+        String layer4 = getAnimationPath()+"Reticle2_Keyboard.chroma";
+        String layer5 = getAnimationPath()+"Reticle3_Keyboard.chroma";
+        String layer6 = getAnimationPath()+"Reticle4_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.closeAnimationName(layer3);
@@ -492,9 +492,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect7ChromaLink()
+    public static void showEffect7ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(0, 45, 45);
@@ -503,9 +503,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect7Headset()
+    public static void showEffect7Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Headset.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(0, 45, 45);
@@ -514,9 +514,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect7Mousepad()
+    public static void showEffect7Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(0, 45, 45);
@@ -525,9 +525,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect7Mouse()
+    public static void showEffect7Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/BlackAndWhiteRainbow_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(0, 45, 45);
@@ -536,11 +536,11 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect8()
+    public static void showEffect8()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Block3_Keyboard.chroma";
-        String layer3 = getAnimationPath() + "Animations/UpParticle1_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Block3_Keyboard.chroma";
+        String layer3 = getAnimationPath()+"UpParticle1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.closeAnimationName(layer3);
@@ -565,9 +565,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect8ChromaLink()
+    public static void showEffect8ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 8;
@@ -581,9 +581,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect8Headset()
+    public static void showEffect8Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 8;
@@ -597,9 +597,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect8Mousepad()
+    public static void showEffect8Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 8;
@@ -613,9 +613,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect8Mouse()
+    public static void showEffect8Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 8;
@@ -629,11 +629,11 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect9()
+    public static void showEffect9()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Ladder1_Keyboard.chroma";
-        String layer3 = getAnimationPath() + "Animations/Ladder2_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Ladder1_Keyboard.chroma";
+        String layer3 = getAnimationPath()+"Ladder2_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.closeAnimationName(layer3);
@@ -655,9 +655,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect9ChromaLink()
+    public static void showEffect9ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -670,9 +670,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect9Headset()
+    public static void showEffect9Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -685,9 +685,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect9Mousepad()
+    public static void showEffect9Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -700,9 +700,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect9Mouse()
+    public static void showEffect9Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -715,11 +715,11 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect10()
+    public static void showEffect10()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Heart1_Keyboard.chroma";
-        String layer3 = getAnimationPath() + "Animations/ReactiveSpace_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Heart1_Keyboard.chroma";
+        String layer3 = getAnimationPath()+"ReactiveSpace_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.closeAnimationName(layer3);
@@ -742,9 +742,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect10ChromaLink()
+    public static void showEffect10ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -757,9 +757,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect10Headset()
+    public static void showEffect10Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -772,9 +772,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect10Mousepad()
+    public static void showEffect10Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -787,9 +787,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect10Mouse()
+    public static void showEffect10Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -802,11 +802,11 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect11()
+    public static void showEffect11()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Ladder1_Keyboard.chroma";
-        String layer3 = getAnimationPath() + "Animations/Ladder2_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Ladder1_Keyboard.chroma";
+        String layer3 = getAnimationPath()+"Ladder2_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.closeAnimationName(layer3);
@@ -834,42 +834,42 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect11ChromaLink()
+    public static void showEffect11ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         sChromaAnimationAPI.fillRandomColorsAllFramesName(baseLayer);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect11Headset()
+    public static void showEffect11Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         sChromaAnimationAPI.fillRandomColorsAllFramesName(baseLayer);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect11Mousepad()
+    public static void showEffect11Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         sChromaAnimationAPI.fillRandomColorsAllFramesName(baseLayer);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect11Mouse()
+    public static void showEffect11Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         sChromaAnimationAPI.fillRandomColorsAllFramesName(baseLayer);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect12()
+    public static void showEffect12()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Sword1_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Sword1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -891,9 +891,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect12ChromaLink()
+    public static void showEffect12ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -906,9 +906,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect12Headset()
+    public static void showEffect12Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -921,9 +921,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect12Mousepad()
+    public static void showEffect12Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -936,9 +936,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect12Mouse()
+    public static void showEffect12Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -951,10 +951,10 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect13()
+    public static void showEffect13()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Chest1_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Chest1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -975,9 +975,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect13ChromaLink()
+    public static void showEffect13ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -990,9 +990,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect13Headset()
+    public static void showEffect13Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1005,9 +1005,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect13Mousepad()
+    public static void showEffect13Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1020,9 +1020,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect13Mouse()
+    public static void showEffect13Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1035,10 +1035,10 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect14()
+    public static void showEffect14()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Spiral_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Spiral_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -1056,9 +1056,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect14ChromaLink()
+    public static void showEffect14ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1071,9 +1071,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect14Headset()
+    public static void showEffect14Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1086,9 +1086,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect14Mousepad()
+    public static void showEffect14Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1101,9 +1101,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect14Mouse()
+    public static void showEffect14Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1116,10 +1116,10 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect15()
+    public static void showEffect15()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Bird1_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Bird1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -1139,9 +1139,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect15ChromaLink()
+    public static void showEffect15ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1154,9 +1154,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect15Headset()
+    public static void showEffect15Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1169,9 +1169,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect15Mousepad()
+    public static void showEffect15Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1184,9 +1184,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect15Mouse()
+    public static void showEffect15Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1199,10 +1199,10 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect16()
+    public static void showEffect16()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Spiral_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Spiral_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -1223,9 +1223,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect16ChromaLink()
+    public static void showEffect16ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1238,9 +1238,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect16Headset()
+    public static void showEffect16Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1253,9 +1253,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect16Mousepad()
+    public static void showEffect16Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1268,9 +1268,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect16Mouse()
+    public static void showEffect16Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1283,9 +1283,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect17()
+    public static void showEffect17()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
         String layer2 = "animations/Fish1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
@@ -1303,9 +1303,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect17ChromaLink()
+    public static void showEffect17ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1318,9 +1318,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect17Headset()
+    public static void showEffect17Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1333,9 +1333,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect17Mousepad()
+    public static void showEffect17Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1348,9 +1348,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect17Mouse()
+    public static void showEffect17Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1363,9 +1363,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect18()
+    public static void showEffect18()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
         String layer2 = "animations/Fish1_Keyboard.chroma";
         String layer3 = "animations/Rainbow_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
@@ -1387,9 +1387,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect18ChromaLink()
+    public static void showEffect18ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1402,9 +1402,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect18Headset()
+    public static void showEffect18Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1417,9 +1417,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect18Mousepad()
+    public static void showEffect18Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1432,9 +1432,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect18Mouse()
+    public static void showEffect18Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1447,9 +1447,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect19()
+    public static void showEffect19()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
         String layer2 = "animations/Swim1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
@@ -1468,9 +1468,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect19ChromaLink()
+    public static void showEffect19ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1483,9 +1483,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect19Headset()
+    public static void showEffect19Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1498,9 +1498,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect19Mousepad()
+    public static void showEffect19Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1513,9 +1513,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect19Mouse()
+    public static void showEffect19Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1528,9 +1528,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect20()
+    public static void showEffect20()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
         String layer2 = "animations/Bubbles1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
@@ -1548,9 +1548,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect20ChromaLink()
+    public static void showEffect20ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1563,9 +1563,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect20Headset()
+    public static void showEffect20Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1578,9 +1578,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect20Mousepad()
+    public static void showEffect20Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1593,9 +1593,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect20Mouse()
+    public static void showEffect20Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1608,10 +1608,10 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect21()
+    public static void showEffect21()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/Particle1_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Particle1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -1629,9 +1629,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect21ChromaLink()
+    public static void showEffect21ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1644,9 +1644,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect21Headset()
+    public static void showEffect21Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1659,9 +1659,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect21Mousepad()
+    public static void showEffect21Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1674,9 +1674,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect21Mouse()
+    public static void showEffect21Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1689,10 +1689,10 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect22()
+    public static void showEffect22()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Keyboard.chroma";
-        String layer2 = getAnimationPath() + "Animations/UpParticle3_Keyboard.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"UpParticle3_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -1711,9 +1711,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect22ChromaLink()
+    public static void showEffect22ChromaLink()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_ChromaLink.chroma";
+        String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1726,9 +1726,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect22Headset()
+    public static void showEffect22Headset()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Headset.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1741,9 +1741,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect22Mousepad()
+    public static void showEffect22Mousepad()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mousepad.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1756,9 +1756,9 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
-    void showEffect22Mouse()
+    public static void showEffect22Mouse()
     {
-        String baseLayer = getAnimationPath() + "Animations/Blank_Mouse.chroma";
+        String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1771,4 +1771,112 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
+/*
+case 1:
+ShowEffect1();
+ShowEffect1ChromaLink();
+ShowEffect1Headset();
+ShowEffect1Mousepad();
+ShowEffect1Mouse();
+break;
+case 2:
+ShowEffect2();
+ShowEffect2ChromaLink();
+ShowEffect2Headset();
+ShowEffect2Mousepad();
+ShowEffect2Mouse();
+break;
+case 3:
+ShowEffect3();
+ShowEffect3ChromaLink();
+ShowEffect3Headset();
+ShowEffect3Mousepad();
+ShowEffect3Mouse();
+break;
+case 4:
+ShowEffect4();
+ShowEffect4ChromaLink();
+ShowEffect4Headset();
+ShowEffect4Mousepad();
+ShowEffect4Mouse();
+break;
+case 5:
+ShowEffect5();
+ShowEffect5ChromaLink();
+ShowEffect5Headset();
+ShowEffect5Mousepad();
+ShowEffect5Mouse();
+break;
+case 6:
+ShowEffect6();
+ShowEffect6ChromaLink();
+ShowEffect6Headset();
+ShowEffect6Mousepad();
+ShowEffect6Mouse();
+break;
+case 7:
+ShowEffect7();
+ShowEffect7ChromaLink();
+ShowEffect7Headset();
+ShowEffect7Mousepad();
+ShowEffect7Mouse();
+break;
+case 8:
+ShowEffect8();
+ShowEffect8ChromaLink();
+ShowEffect8Headset();
+ShowEffect8Mousepad();
+ShowEffect8Mouse();
+break;
+case 9:
+ShowEffect9();
+ShowEffect9ChromaLink();
+ShowEffect9Headset();
+ShowEffect9Mousepad();
+ShowEffect9Mouse();
+break;
+case 10:
+ShowEffect10();
+ShowEffect10ChromaLink();
+ShowEffect10Headset();
+ShowEffect10Mousepad();
+ShowEffect10Mouse();
+break;
+case 11:
+ShowEffect11();
+ShowEffect11ChromaLink();
+ShowEffect11Headset();
+ShowEffect11Mousepad();
+ShowEffect11Mouse();
+break;
+case 12:
+ShowEffect12();
+ShowEffect12ChromaLink();
+ShowEffect12Headset();
+ShowEffect12Mousepad();
+ShowEffect12Mouse();
+break;
+case 13:
+ShowEffect13();
+ShowEffect13ChromaLink();
+ShowEffect13Headset();
+ShowEffect13Mousepad();
+ShowEffect13Mouse();
+break;
+case 14:
+ShowEffect14();
+ShowEffect14ChromaLink();
+ShowEffect14Headset();
+ShowEffect14Mousepad();
+ShowEffect14Mouse();
+break;
+case 15:
+ShowEffect15();
+ShowEffect15ChromaLink();
+ShowEffect15Headset();
+ShowEffect15Mousepad();
+ShowEffect15Mouse();
+break;
+*/
+
 }

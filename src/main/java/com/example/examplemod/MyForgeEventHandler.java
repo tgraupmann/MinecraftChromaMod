@@ -29,7 +29,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBloc
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
-public class MyForgeEventHandler {
+public class MyForgeEventHandler extends ChromaEffects {
 
 	private class PlayerState {
 		public boolean mAlive = true;
@@ -43,27 +43,12 @@ public class MyForgeEventHandler {
 
 	List<String> mEvents = new ArrayList<String>();
 
-	private static JChromaSDK sChromaAnimationAPI;
-
 	private static boolean sChromaInitialized = false;
-
-	private void setupBaseAnimation(String device) {
-		if (sChromaInitialized) {
-			int ground = sChromaAnimationAPI.getRGB(64, 32, 0);
-
-			String baseLayer = getAnimationPath() + "Blank_" + device + ".chroma";
-			sChromaAnimationAPI.closeAnimationName(baseLayer);
-			sChromaAnimationAPI.fillZeroColorAllFramesName(baseLayer, ground);
-
-			String idleAnimation = "Idle_" + device + ".chroma";
-			sChromaAnimationAPI.copyAnimationName(baseLayer, idleAnimation);
-			sChromaAnimationAPI.setIdleAnimationName(idleAnimation);
-		}
-	}
 
 	public void init() {
 
 		sChromaAnimationAPI = JChromaSDK.getInstance();
+		ChromaEffects.sChromaAnimationAPI = sChromaAnimationAPI;
 		int result = sChromaAnimationAPI.init();
 		if (result == 0) {
 			sChromaInitialized = true;
@@ -83,14 +68,6 @@ public class MyForgeEventHandler {
 		
 		MinecraftForge.EVENT_BUS.register(this);
 	}
-	
-	private String getAnimationPath() {
-		String cd = System.getProperty("user.dir");
-		//System.out.println("********* getAnimationPath: cd="+cd);
-		String path = cd + "\\..\\src\\main\\resources\\Animations\\";
-		//System.out.println("********* getAnimationPath: path="+path);
-		return path;
-	}
 
 	private void playAnimationName(String name, boolean loop) {
 		if (sChromaInitialized) {
@@ -105,6 +82,20 @@ public class MyForgeEventHandler {
 			sChromaAnimationAPI.closeAnimationName(path);
 			sChromaAnimationAPI.reverseAllFramesName(path);
 			sChromaAnimationAPI.playAnimationName(path, loop);
+		}
+	}
+
+	private void setupBaseAnimation(String device) {
+		if (sChromaInitialized) {
+			int ground = sChromaAnimationAPI.getRGB(64, 32, 0);
+
+			String baseLayer = getAnimationPath() + "Blank_" + device + ".chroma";
+			sChromaAnimationAPI.closeAnimationName(baseLayer);
+			sChromaAnimationAPI.fillZeroColorAllFramesName(baseLayer, ground);
+
+			String idleAnimation = "Idle_" + device + ".chroma";
+			sChromaAnimationAPI.copyAnimationName(baseLayer, idleAnimation);
+			sChromaAnimationAPI.setIdleAnimationName(idleAnimation);
 		}
 	}
 
@@ -279,6 +270,22 @@ public class MyForgeEventHandler {
 		timer.schedule(task, delay);
 	}
 
+	private void setupInWater() {
+		if (sChromaInitialized) {
+			showEffect11();
+			showEffect11ChromaLink();
+			showEffect11Headset();
+			showEffect11Mousepad();
+			showEffect11Mouse();
+		}
+	}
+
+	private void setupOutOfWater() {
+		if (sChromaInitialized) {
+			sChromaAnimationAPI.stopAll();
+		}
+	}
+
 	@SubscribeEvent
 	public void handleEvent(Event event) {
 
@@ -445,10 +452,12 @@ public class MyForgeEventHandler {
 			if (tickEvent.player.isInWater() && !mPlayerState.mInWater) {
 				mPlayerState.mInWater = true;
 				System.out.println("Player is in Water");
+				setupInWater();
 			}
 			if (!tickEvent.player.isInWater() && mPlayerState.mInWater) {
 				mPlayerState.mInWater = false;
 				System.out.println("Player is not in Water");
+				setupOutOfWater();
 			}
 
 			if (tickEvent.player.onGround && !mPlayerState.mOnGround) {
