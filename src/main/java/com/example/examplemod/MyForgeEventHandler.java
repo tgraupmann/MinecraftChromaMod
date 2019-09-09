@@ -16,7 +16,6 @@ import net.minecraft.entity.passive.BatEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.passive.horse.HorseEntity;
 import net.minecraft.inventory.container.ChestContainer;
-import net.minecraft.state.IProperty;
 import net.minecraft.state.StateHolder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
@@ -29,8 +28,6 @@ import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-
-import org.jglr.jchroma.JChroma;
 
 public class MyForgeEventHandler {
 
@@ -46,14 +43,14 @@ public class MyForgeEventHandler {
 
 	List<String> mEvents = new ArrayList<String>();
 
-	private static JChromaSDK sChroma;
+	private static JChromaSDK sChromaAnimationAPI;
 
 	private static boolean sChromaInitialized = false;
 
 	public void init() {
 
-		sChroma = JChromaSDK.getInstance();
-		int result = sChroma.init();
+		sChromaAnimationAPI = JChromaSDK.getInstance();
+		int result = sChromaAnimationAPI.init();
 		if (result == 0) {
 			sChromaInitialized = true;
 		} else {
@@ -61,12 +58,12 @@ public class MyForgeEventHandler {
 		}
 
 		if (sChromaInitialized) {
-			sChroma.setIdleAnimationName(getAnimationPath() + "BaseEffect_ChromaLink.chroma");
-			sChroma.setIdleAnimationName(getAnimationPath() + "BaseEffect_Headset.chroma");
-			sChroma.setIdleAnimationName(getAnimationPath() + "BaseEffect_Keyboard.chroma");
-			sChroma.setIdleAnimationName(getAnimationPath() + "BaseEffect_Mouse.chroma");
-			sChroma.setIdleAnimationName(getAnimationPath() + "BaseEffect_Mousepad.chroma");
-			sChroma.useIdleAnimations(true);
+			sChromaAnimationAPI.setIdleAnimationName(getAnimationPath() + "BaseEffect_ChromaLink.chroma");
+			sChromaAnimationAPI.setIdleAnimationName(getAnimationPath() + "BaseEffect_Headset.chroma");
+			sChromaAnimationAPI.setIdleAnimationName(getAnimationPath() + "BaseEffect_Keyboard.chroma");
+			sChromaAnimationAPI.setIdleAnimationName(getAnimationPath() + "BaseEffect_Mouse.chroma");
+			sChromaAnimationAPI.setIdleAnimationName(getAnimationPath() + "BaseEffect_Mousepad.chroma");
+			sChromaAnimationAPI.useIdleAnimations(true);
 		}
 		
 		MinecraftForge.EVENT_BUS.register(this);
@@ -83,16 +80,16 @@ public class MyForgeEventHandler {
 	private void playAnimationName(String name, boolean loop) {
 		if (sChromaInitialized) {
 			String path = getAnimationPath() + name;
-			sChroma.closeAnimationName(path);
-			sChroma.playAnimationName(path, loop);
+			sChromaAnimationAPI.closeAnimationName(path);
+			sChromaAnimationAPI.playAnimationName(path, loop);
 		}
 	}
 	private void playAnimationReverseName(String name, boolean loop) {
 		if (sChromaInitialized) {
 			String path = getAnimationPath() + name;
-			sChroma.closeAnimationName(path);
-			sChroma.reverseAllFramesName(path);
-			sChroma.playAnimationName(path, loop);
+			sChromaAnimationAPI.closeAnimationName(path);
+			sChromaAnimationAPI.reverseAllFramesName(path);
+			sChromaAnimationAPI.playAnimationName(path, loop);
 		}
 	}
 
