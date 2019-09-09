@@ -111,6 +111,13 @@ public class MyForgeEventHandler extends ChromaEffects {
 		}
 
 		System.out.println("Player shot an arrow");
+		if (sChromaInitialized) {
+			showEffect5();
+			showEffect5ChromaLink();
+			showEffect5Headset();
+			showEffect5Mousepad();
+			showEffect5Mouse();
+		}
 	}
 
 	@SubscribeEvent
@@ -137,6 +144,22 @@ public class MyForgeEventHandler extends ChromaEffects {
 		}
 	}
 
+	void setupChestOpen() {
+		if (sChromaInitialized) {
+			showEffect13();
+			showEffect13ChromaLink();
+			showEffect13Headset();
+			showEffect13Mousepad();
+			showEffect13Mouse();
+		}
+	}
+
+	void setupChestClose() {
+		if (sChromaInitialized) {
+			sChromaAnimationAPI.stopAll();
+		}
+	}
+
 	@SubscribeEvent
 	public void handlePlayerContainerEvent(PlayerContainerEvent event) {
 		/*
@@ -154,8 +177,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 		if (event.getContainer() instanceof ChestContainer) {
 			if (event.getClass() == PlayerContainerEvent.Open.class) {
 				System.out.println("Chest Opened");
+				setupChestOpen();
 			} else if (event.getClass() == PlayerContainerEvent.Close.class) {
 				System.out.println("Chest Closed");
+				setupChestClose();
 			}
 		}
 	}
