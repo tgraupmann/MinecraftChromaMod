@@ -1,19 +1,11 @@
 package com.example.examplemod;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import org.jglr.jchroma.JChroma;
-
-import com.razer.chroma.javachromasdk.AnimationBase;
-import com.razer.chroma.javachromasdk.ChromaAnimationAPI;
+import com.razer.java.JChromaSDK;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -38,6 +30,8 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBloc
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import org.jglr.jchroma.JChroma;
+
 public class MyForgeEventHandler {
 
 	private class PlayerState {
@@ -52,59 +46,57 @@ public class MyForgeEventHandler {
 
 	List<String> mEvents = new ArrayList<String>();
 
+	private static JChromaSDK sChroma;
+
+	private static boolean sChromaInitialized = false;
+
 	public void init() {
-		
-		_sChroma = JChroma.getInstance();
-		_sChroma.init();
+
+		sChroma = JChromaSDK.getInstance();
+		int result = sChroma.init();
+		if (result == 0) {
+			sChromaInitialized = true;
+		} else {
+			sChromaInitialized = false;
+		}
+
+		if (sChromaInitialized) {
+			sChroma.setIdleAnimationName(getAnimationPath() + "BaseEffect_ChromaLink.chroma");
+			sChroma.setIdleAnimationName(getAnimationPath() + "BaseEffect_Headset.chroma");
+			sChroma.setIdleAnimationName(getAnimationPath() + "BaseEffect_Keyboard.chroma");
+			sChroma.setIdleAnimationName(getAnimationPath() + "BaseEffect_Mouse.chroma");
+			sChroma.setIdleAnimationName(getAnimationPath() + "BaseEffect_Mousepad.chroma");
+			sChroma.useIdleAnimations(true);
+		}
 		
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 	
-	public void uninit() {
-		_sChroma.free();
+	private String getAnimationPath() {
+		String cd = System.getProperty("user.dir");
+		//System.out.println("********* getAnimationPath: cd="+cd);
+		String path = cd + "\\..\\src\\main\\resources\\";
+		//System.out.println("********* getAnimationPath: path="+path);
+		return path;
 	}
-	
-	private static JChroma _sChroma;
-	
-	private static AnimationBase showAnimation(String animationName) {
-        AnimationBase animation = null;
-        System.out.println("Testing: " + animationName + " ...");
-        String workingDir = System.getProperty("user.dir");
-        File temp = new File(workingDir+"\\..\\src\\main\\resources\\", animationName);
 
-        String absolutePath = temp.getAbsolutePath();
-        InputStream input = null;
-        try {
-            input = new FileInputStream(absolutePath);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return null;
-        }
-        try {
-            if (null != input) {
-                animation = ChromaAnimationAPI.OpenAnimation(input);
-                input.close();
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        if (animation == null) {
-            System.err.println("Animation could not be loaded! " + animationName);
-            return null;
-        }
+	private void playAnimationName(String name, boolean loop) {
+		if (sChromaInitialized) {
+			String path = getAnimationPath() + name;
+			sChroma.closeAnimationName(path);
+			sChroma.playAnimationName(path, loop);
+		}
+	}
+	private void playAnimationReverseName(String name, boolean loop) {
+		if (sChromaInitialized) {
+			String path = getAnimationPath() + name;
+			sChroma.closeAnimationName(path);
+			sChroma.reverseAllFramesName(path);
+			sChroma.playAnimationName(path, loop);
+		}
+	}
 
-        int frameCount = animation.getFrameCount();
-        for (int frameId = 0; frameId < frameCount; ++frameId) {
-            try {
-                animation.showFrame(_sChroma, frameId);
-                int duration = (int)Math.floor(1000 * animation.getDuration(frameId));
-                Thread.sleep(duration);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        return animation;
-    }
+
 
 	@SubscribeEvent
 	public void handleArrowLooseEvent(ArrowLooseEvent event) {
@@ -189,18 +181,18 @@ public class MyForgeEventHandler {
 							|| block == Blocks.OAK_DOOR) {
 							if ((boolean) stateHolder.get(BlockStateProperties.OPEN)) {
 								System.out.println("Door is open");
-								showAnimation("OpenDoor_ChromaLink.chroma");
-								showAnimation("OpenDoor_Headset.chroma");
-								showAnimation("OpenDoor_Keyboard.chroma");
-								showAnimation("OpenDoor_Mouse.chroma");
-								showAnimation("OpenDoor_Mousepad.chroma");
+								playAnimationName("OpenDoor_ChromaLink.chroma", false);
+								playAnimationName("OpenDoor_Headset.chroma", false);
+								playAnimationName("OpenDoor_Keyboard.chroma", false);
+								playAnimationName("OpenDoor_Mouse.chroma", false);
+								playAnimationName("OpenDoor_Mousepad.chroma", false);
 							} else {
 								System.out.println("Door is closed");
-								showAnimation("BaseEffect_ChromaLink.chroma");
-								showAnimation("BaseEffect_Headset.chroma");
-								showAnimation("BaseEffect_Keyboard.chroma");
-								showAnimation("BaseEffect_Mouse.chroma");
-								showAnimation("BaseEffect_Mousepad.chroma");
+								playAnimationReverseName("OpenDoor_ChromaLink.chroma", false);
+								playAnimationReverseName("OpenDoor_Headset.chroma", false);
+								playAnimationReverseName("OpenDoor_Keyboard.chroma", false);
+								playAnimationReverseName("OpenDoor_Mouse.chroma", false);
+								playAnimationReverseName("OpenDoor_Mousepad.chroma", false);
 							}
 						}
 

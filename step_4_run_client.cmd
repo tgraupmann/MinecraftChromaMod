@@ -1,0 +1,2 @@
+CALL gradlew runClient
+PAUSE

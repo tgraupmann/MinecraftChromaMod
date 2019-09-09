@@ -1,0 +1,2 @@
+CALL gradlew -v
+PAUSE
