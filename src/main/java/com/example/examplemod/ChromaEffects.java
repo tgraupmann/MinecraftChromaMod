@@ -839,8 +839,12 @@ public class ChromaEffects {
         String baseLayer = getAnimationPath()+"Blank_ChromaLink.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 8;
+        sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
         sChromaAnimationAPI.fillRandomColorsBlackAndWhiteAllFramesName(baseLayer);
         sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect11Headset()
@@ -848,7 +852,12 @@ public class ChromaEffects {
         String baseLayer = getAnimationPath()+"Blank_Headset.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 8;
+        sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
         sChromaAnimationAPI.fillRandomColorsBlackAndWhiteAllFramesName(baseLayer);
+        sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
         sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
@@ -857,7 +866,12 @@ public class ChromaEffects {
         String baseLayer = getAnimationPath()+"Blank_Mousepad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 8;
+        sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
         sChromaAnimationAPI.fillRandomColorsBlackAndWhiteAllFramesName(baseLayer);
+        sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
         sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
@@ -866,7 +880,12 @@ public class ChromaEffects {
         String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 8;
+        sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
         sChromaAnimationAPI.fillRandomColorsBlackAndWhiteAllFramesName(baseLayer);
+        sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
         sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
