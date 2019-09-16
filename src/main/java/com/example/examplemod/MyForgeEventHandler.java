@@ -475,9 +475,59 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 
 	@SubscribeEvent
+	public void handleRightClickEmpty(PlayerInteractEvent.RightClickEmpty event) {
+
+		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.PUFFERFISH_SPAWN_EGG) {
+			System.out.println("Spawn puffer fish");
+			//avoid blocking the main thread
+			Timer timer = new Timer("Timer");
+			TimerTask task = new TimerTask() {
+				public void run() {
+					if (sChromaInitialized) {
+						showEffect17();
+						showEffect17ChromaLink();
+						showEffect17Headset();
+						showEffect17Mousepad();
+						showEffect17Mouse();
+					}
+				}
+			};
+			timer.schedule(task, 0);
+			return;
+		}
+
+		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.TROPICAL_FISH_SPAWN_EGG) {
+			System.out.println("Spawn tropical fish");
+			//avoid blocking the main thread
+			Timer timer = new Timer("Timer");
+			TimerTask task = new TimerTask() {
+				public void run() {
+					if (sChromaInitialized) {
+						showEffect18();
+						showEffect18ChromaLink();
+						showEffect18Headset();
+						showEffect18Mousepad();
+						showEffect18Mouse();
+					}
+				}
+			};
+			timer.schedule(task, 0);
+			return;
+		}
+	}
+
+
+	@SubscribeEvent
 	public void handleRightClickBlock(RightClickBlock event) {
 
-		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.PUFFERFISH){
+		String threadName = Thread.currentThread().getName();
+		switch (threadName) {
+		case "Server thread":
+			// Only interested in Client thread
+			return;
+		}
+
+		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.PUFFERFISH_SPAWN_EGG){
 			System.out.println("Spawn puffer fish");
 			//avoid blocking the main thread
 			Timer timer = new Timer("Timer");
@@ -512,14 +562,6 @@ public class MyForgeEventHandler extends ChromaEffects {
 				}
 			};
 			timer.schedule(task, 0);
-			return;
-		}
-
-
-		String threadName = Thread.currentThread().getName();
-		switch (threadName) {
-		case "Server thread":
-			// Only interested in Client thread
 			return;
 		}
 

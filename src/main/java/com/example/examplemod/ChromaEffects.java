@@ -1301,7 +1301,7 @@ public class ChromaEffects {
     public static void showEffect17()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
-        String layer2 = "animations/Fish1_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Fish1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -1381,8 +1381,8 @@ public class ChromaEffects {
     public static void showEffect18()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
-        String layer2 = "animations/Fish1_Keyboard.chroma";
-        String layer3 = "animations/Rainbow_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Fish1_Keyboard.chroma";
+        String layer3 = getAnimationPath()+"Rainbow_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.closeAnimationName(layer3);
@@ -1465,7 +1465,7 @@ public class ChromaEffects {
     public static void showEffect19()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
-        String layer2 = "animations/Swim1_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Swim1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
@@ -1546,7 +1546,7 @@ public class ChromaEffects {
     public static void showEffect20()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
-        String layer2 = "animations/Bubbles1_Keyboard.chroma";
+        String layer2 = getAnimationPath()+"Bubbles1_Keyboard.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.closeAnimationName(layer2);
         sChromaAnimationAPI.getAnimation(baseLayer);
