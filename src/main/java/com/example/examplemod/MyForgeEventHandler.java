@@ -19,6 +19,8 @@ import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.passive.horse.HorseEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.ChestContainer;
+import net.minecraft.item.Items;
+import net.minecraft.item.SwordItem;
 import net.minecraft.state.StateHolder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
@@ -30,6 +32,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.Event;
@@ -330,7 +333,6 @@ public class MyForgeEventHandler extends ChromaEffects {
 		/*
 		// event only seems to run on the server
 		String threadName = Thread.currentThread().getName();
-		System.out.println("handlePlayerContainerEvent: thread="+threadName);
 		switch (threadName) {
 		case "Server thread":
 			// Only interested in Client thread
@@ -427,6 +429,40 @@ public class MyForgeEventHandler extends ChromaEffects {
 		};
 		timer.schedule(task, 0);
 	}
+
+
+	@SubscribeEvent
+	public void handleLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
+		String threadName = Thread.currentThread().getName();
+		switch (threadName) {
+			case "Server thread":
+				// Only interested in Client thread
+				return;
+		}
+		System.out.println("handleLeftClickEmpty: event="+event+" item in hand: "+event.getPlayer().getHeldItem(event.getHand()));
+		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.DIAMOND_SWORD ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.GOLDEN_SWORD ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.IRON_SWORD ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.STONE_SWORD ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.WOODEN_SWORD){
+			System.out.println("SWORD ATTACK");
+			//avoid blocking the main thread
+			Timer timer = new Timer("Timer");
+			TimerTask task = new TimerTask() {
+				public void run() {
+					if (sChromaInitialized) {
+						showEffect3();
+						showEffect3ChromaLink();
+						showEffect3Headset();
+						showEffect3Mousepad();
+						showEffect3Mouse();
+					}
+				}
+			};
+			timer.schedule(task, 0);
+		}
+	}
+
 
 	@SubscribeEvent
 	public void handleRightClickBlock(RightClickBlock event) {
@@ -644,7 +680,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 		}
 		case "LivingJumpEvent": // net.minecraftforge.event.entity.living.LivingEvent$LivingJumpEvent
 		{
-			System.out.println("Player JUMPED");
+			//System.out.println("Player JUMPED");
 			break;
 		}
 		case "PlayerRespawnEvent": // class net.minecraftforge.fml.common.gameevent.PlayerEvent$PlayerRespawnEvent
@@ -667,20 +703,20 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 			if (tickEvent.player.onGround && !mPlayerState.mOnGround) {
 				mPlayerState.mOnGround = true;
-				System.out.println("Player is on ground");
+				//System.out.println("Player is on ground");
 			}
 			if (!tickEvent.player.onGround && mPlayerState.mOnGround) {
 				mPlayerState.mOnGround = false;
-				System.out.println("Player is not on the ground");
+				//System.out.println("Player is not on the ground");
 			}
 
 			if (tickEvent.player.isAirBorne && !mPlayerState.mInAir) {
 				mPlayerState.mInAir = true;
-				System.out.println("Player is in the air");
+				//System.out.println("Player is in the air");
 			}
 			if (!tickEvent.player.isAirBorne && mPlayerState.mInAir) {
 				mPlayerState.mInAir = false;
-				System.out.println("Player is not in the air");
+				//System.out.println("Player is not in the air");
 			}
 
 			if (!tickEvent.player.isAlive() && mPlayerState.mAlive) {

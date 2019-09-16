@@ -156,7 +156,7 @@ public class ChromaEffects {
         sChromaAnimationAPI.duplicateMirrorFramesName(layer2);
         int frameCount = sChromaAnimationAPI.getFrameCountName(layer2);
         sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
-        sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 32, 32, 32); //background
+        sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 64, 32, 0); //background
         sChromaAnimationAPI.copyNonZeroAllKeysAllFramesOffsetName(layer2, baseLayer, 0);
         sChromaAnimationAPI.setChromaCustomFlagName(baseLayer, true);
         sChromaAnimationAPI.setChromaCustomColorAllFramesName(baseLayer);
@@ -285,11 +285,7 @@ public class ChromaEffects {
         sChromaAnimationAPI.getAnimation(baseLayer);
         sChromaAnimationAPI.getAnimation(layer2);
         sChromaAnimationAPI.getAnimation(layer3);
-        int frameId = 7;
-        int delay = 30;
-        for (int i = 0; i < delay; ++i) {
-            sChromaAnimationAPI.insertFrameName(layer3, frameId, frameId);
-        }
+        sChromaAnimationAPI.insertDelayName(layer3, 7, 10);
         int frameCount = sChromaAnimationAPI.getFrameCountName(layer3);
         sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
         sChromaAnimationAPI.duplicateFirstFrameName(layer2, frameCount);
@@ -299,7 +295,7 @@ public class ChromaEffects {
         sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(layer3, 160, 120, 90);
         sChromaAnimationAPI.fillThresholdColorsAllFramesName(layer3, 50, 0);
         sChromaAnimationAPI.copyNonZeroAllKeysAllFramesOffsetName(layer3, baseLayer, 0); //arrow
-        sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 60, 40, 20); //background
+        sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 64, 32, 0); //background
         sChromaAnimationAPI.setChromaCustomFlagName(baseLayer, true);
         sChromaAnimationAPI.setChromaCustomColorAllFramesName(baseLayer);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
