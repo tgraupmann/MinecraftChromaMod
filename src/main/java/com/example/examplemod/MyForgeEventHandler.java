@@ -514,6 +514,27 @@ public class MyForgeEventHandler extends ChromaEffects {
 			timer.schedule(task, 0);
 			return;
 		}
+
+		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.POTION ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.LINGERING_POTION ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.SPLASH_POTION) {
+			System.out.println("Drinking potion");
+			//avoid blocking the main thread
+			Timer timer = new Timer("Timer");
+			TimerTask task = new TimerTask() {
+				public void run() {
+					if (sChromaInitialized) {
+						showEffect14();
+						showEffect14ChromaLink();
+						showEffect14Headset();
+						showEffect14Mousepad();
+						showEffect14Mouse();
+					}
+				}
+			};
+			timer.schedule(task, 0);
+			return;
+		}
 	}
 
 
@@ -558,6 +579,27 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect18Headset();
 						showEffect18Mousepad();
 						showEffect18Mouse();
+					}
+				}
+			};
+			timer.schedule(task, 0);
+			return;
+		}
+
+		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.POTION ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.LINGERING_POTION ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.SPLASH_POTION) {
+			System.out.println("Drinking potion");
+			//avoid blocking the main thread
+			Timer timer = new Timer("Timer");
+			TimerTask task = new TimerTask() {
+				public void run() {
+					if (sChromaInitialized) {
+						showEffect14();
+						showEffect14ChromaLink();
+						showEffect14Headset();
+						showEffect14Mousepad();
+						showEffect14Mouse();
 					}
 				}
 			};
