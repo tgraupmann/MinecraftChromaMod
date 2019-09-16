@@ -924,7 +924,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 		}
 		case "LivingFallEvent": // net.minecraftforge.event.entity.living.LivingFallEvent
 		{
-			System.out.println("Player FELL");
+			//System.out.println("Player FELL");
 			break;
 		}
 		case "LivingHurtEvent": // net.minecraftforge.event.entity.living.LivingHurtEvent
