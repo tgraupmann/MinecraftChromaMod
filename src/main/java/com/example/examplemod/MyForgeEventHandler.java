@@ -25,6 +25,7 @@ import net.minecraft.state.StateHolder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
@@ -34,6 +35,7 @@ import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.event.terraingen.BiomeEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -433,6 +435,37 @@ public class MyForgeEventHandler extends ChromaEffects {
 			}
 		};
 		timer.schedule(task, 0);
+	}
+
+
+	@SubscribeEvent
+	public void handleBiomeEvent(BiomeEvent event) {
+		String threadName = Thread.currentThread().getName();
+		switch (threadName) {
+			case "Server thread":
+				// Only interested in Client thread
+				return;
+		}
+
+		if (event.getBiome() == Biomes.SNOWY_BEACH ||
+				event.getBiome() == Biomes.SNOWY_MOUNTAINS ||
+				event.getBiome() == Biomes.SNOWY_TAIGA ||
+				event.getBiome() == Biomes.SNOWY_TAIGA_MOUNTAINS ||
+				event.getBiome() == Biomes.SNOWY_TUNDRA) {
+			Timer timer = new Timer("Timer");
+			TimerTask task = new TimerTask() {
+				public void run() {
+					if (sChromaInitialized) {
+						showEffect21();
+						showEffect21ChromaLink();
+						showEffect21Headset();
+						showEffect21Mousepad();
+						showEffect21Mouse();
+					}
+				}
+			};
+			timer.schedule(task, 0);
+		}
 	}
 
 
