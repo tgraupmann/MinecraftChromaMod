@@ -11,10 +11,13 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.monster.ZombieEntity;
 import net.minecraft.entity.passive.BatEntity;
+import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.PigEntity;
 import net.minecraft.entity.passive.horse.HorseEntity;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.container.ChestContainer;
 import net.minecraft.state.StateHolder;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -22,10 +25,13 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
+import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.player.ArrowLooseEvent;
 import net.minecraftforge.event.entity.player.PlayerContainerEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -56,49 +62,165 @@ public class MyForgeEventHandler extends ChromaEffects {
 			sChromaInitialized = false;
 		}
 
-		if (sChromaInitialized) {
-			setupBaseAnimation("ChromaLink");
-			setupBaseAnimation("Headset");
-			setupBaseAnimation("Keyboard");
-			setupBaseAnimation("Keypad");
-			setupBaseAnimation("Mouse");
-			setupBaseAnimation("Mousepad");
-			sChromaAnimationAPI.useIdleAnimations(true);
-		}
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					setupBaseAnimation("ChromaLink");
+					setupBaseAnimation("Headset");
+					setupBaseAnimation("Keyboard");
+					setupBaseAnimation("Keypad");
+					setupBaseAnimation("Mouse");
+					setupBaseAnimation("Mousepad");
+					sChromaAnimationAPI.useIdleAnimations(true);
+				}
+			}
+		};
+		timer.schedule(task, 0);
 		
 		MinecraftForge.EVENT_BUS.register(this);
 	}
 
 	private void playAnimationName(String name, boolean loop) {
-		if (sChromaInitialized) {
-			String path = getAnimationPath() + name;
-			sChromaAnimationAPI.closeAnimationName(path);
-			sChromaAnimationAPI.playAnimationName(path, loop);
-		}
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					String path = getAnimationPath() + name;
+					sChromaAnimationAPI.closeAnimationName(path);
+					sChromaAnimationAPI.playAnimationName(path, loop);
+				}
+			}
+		};
+		timer.schedule(task, 0);
 	}
 	private void playAnimationReverseName(String name, boolean loop) {
-		if (sChromaInitialized) {
-			String path = getAnimationPath() + name;
-			sChromaAnimationAPI.closeAnimationName(path);
-			sChromaAnimationAPI.reverseAllFramesName(path);
-			sChromaAnimationAPI.playAnimationName(path, loop);
-		}
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					String path = getAnimationPath() + name;
+					sChromaAnimationAPI.closeAnimationName(path);
+					sChromaAnimationAPI.reverseAllFramesName(path);
+					sChromaAnimationAPI.playAnimationName(path, loop);
+				}
+			}
+		};
+		timer.schedule(task, 0);
 	}
 
 	private void setupBaseAnimation(String device) {
-		if (sChromaInitialized) {
-			int ground = sChromaAnimationAPI.getRGB(64, 32, 0);
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					int ground = sChromaAnimationAPI.getRGB(64, 32, 0);
 
-			String baseLayer = getAnimationPath() + "Blank_" + device + ".chroma";
-			sChromaAnimationAPI.closeAnimationName(baseLayer);
-			sChromaAnimationAPI.fillZeroColorAllFramesName(baseLayer, ground);
+					String baseLayer = getAnimationPath() + "Blank_" + device + ".chroma";
+					sChromaAnimationAPI.closeAnimationName(baseLayer);
+					sChromaAnimationAPI.fillZeroColorAllFramesName(baseLayer, ground);
 
-			String idleAnimation = "Idle_" + device + ".chroma";
-			sChromaAnimationAPI.copyAnimationName(baseLayer, idleAnimation);
-			sChromaAnimationAPI.setIdleAnimationName(idleAnimation);
-		}
+					String idleAnimation = "Idle_" + device + ".chroma";
+					sChromaAnimationAPI.copyAnimationName(baseLayer, idleAnimation);
+					sChromaAnimationAPI.setIdleAnimationName(idleAnimation);
+				}
+			}
+		};
+		timer.schedule(task, 0);
 	}
 
+
+	@SubscribeEvent
+	public void handlePlaceBlock(BlockEvent.EntityPlaceEvent event) {
+		// doesn't fire on client
+		/*
+		String threadName = Thread.currentThread().getName();
+		switch (threadName) {
+			case "Server thread":
+				// Only interested in Client thread
+				return;
+		}
+		*/
+
+		System.out.println("Placed block");
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					showEffect4();
+					showEffect4ChromaLink();
+					showEffect4Headset();
+					showEffect4Mousepad();
+					showEffect4Mouse();
+				}
+			}
+		};
+		timer.schedule(task, 0);
+	}
+
+
+	@SubscribeEvent
+	public void handleCraftItem(PlayerEvent.ItemCraftedEvent event) {
+		String threadName = Thread.currentThread().getName();
+		switch (threadName) {
+			case "Server thread":
+				// Only interested in Client thread
+				return;
+		}
+
+		System.out.println("Crafted item");
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					showEffect7();
+					showEffect7ChromaLink();
+					showEffect7Headset();
+					showEffect7Mousepad();
+					showEffect7Mouse();
+				}
+			}
+		};
+		timer.schedule(task, 0);
+	}
+
+
+	@SubscribeEvent
+	public void handlePlayerDamage(LivingDamageEvent event) {
+		// doesn't fire on client
+		/*
+		String threadName = Thread.currentThread().getName();
+		switch (threadName) {
+			case "Server thread":
+				// Only interested in Client thread
+				return;
+		}
+		*/
+
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (event.getSource().getTrueSource() instanceof CreeperEntity) {
+					System.out.println("Damaged by creeper");
+					if (sChromaInitialized) {
+						showEffect10();
+						showEffect10ChromaLink();
+						showEffect10Headset();
+						showEffect10Mousepad();
+						showEffect10Mouse();
+					}
+				}
+			}
+		};
+		timer.schedule(task, 0);
+	}
 
 
 	@SubscribeEvent
@@ -111,53 +233,96 @@ public class MyForgeEventHandler extends ChromaEffects {
 		}
 
 		System.out.println("Player shot an arrow");
-		if (sChromaInitialized) {
-			showEffect5();
-			showEffect5ChromaLink();
-			showEffect5Headset();
-			showEffect5Mousepad();
-			showEffect5Mouse();
-		}
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					showEffect5();
+					showEffect5ChromaLink();
+					showEffect5Headset();
+					showEffect5Mousepad();
+					showEffect5Mouse();
+				}
+			}
+		};
+		timer.schedule(task, 0);
 	}
 
 	@SubscribeEvent
 	public void handleLivingDeathEvent(LivingDeathEvent event) {
+		// Doesn't fire on client
+		/*
 		String threadName = Thread.currentThread().getName();
 		switch (threadName) {
-		case "Server thread":
-			// Only interested in Client thread
-			return;
+			case "Server thread":
+				// Only interested in Client thread
+				return;
 		}
+		*/
 
 		LivingEntity entityLiving = event.getEntityLiving();
-		
-		if (event.getEntityLiving() instanceof BatEntity) {
-			System.out.println("Bat died");
-		} else if (event.getEntityLiving() instanceof HorseEntity) {
-			System.out.println("Horse died");
-		} else if (event.getEntityLiving() instanceof ZombieEntity) {
-			System.out.println("Zombie died");
-		} else if (event.getEntityLiving() instanceof PigEntity) {
-			System.out.println("Pig died");
-		} else {
-			System.out.println("Something living died: " + entityLiving.getClass());
-		}
+
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (event.getEntityLiving() instanceof PigEntity) {
+					if (event.getSource().getTrueSource() instanceof PlayerEntity) {
+						System.out.println("Player killed pig");
+						if (sChromaInitialized) {
+							showEffect12();
+							showEffect12ChromaLink();
+							showEffect12Headset();
+							showEffect12Mousepad();
+							showEffect12Mouse();
+						}
+					}
+				} else if (event.getEntityLiving() instanceof ChickenEntity) {
+					if (event.getSource().getTrueSource() instanceof PlayerEntity) {
+						System.out.println("Player killed chicken");
+						if (sChromaInitialized) {
+							showEffect15();
+							showEffect15ChromaLink();
+							showEffect15Headset();
+							showEffect15Mousepad();
+							showEffect15Mouse();
+						}
+					}
+				}
+			}
+		};
+		timer.schedule(task, 0);
 	}
 
 	void setupChestOpen() {
-		if (sChromaInitialized) {
-			showEffect13();
-			showEffect13ChromaLink();
-			showEffect13Headset();
-			showEffect13Mousepad();
-			showEffect13Mouse();
-		}
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					showEffect13();
+					showEffect13ChromaLink();
+					showEffect13Headset();
+					showEffect13Mousepad();
+					showEffect13Mouse();
+				}
+			}
+		};
+		timer.schedule(task, 0);
 	}
 
 	void setupChestClose() {
-		if (sChromaInitialized) {
-			sChromaAnimationAPI.stopAll();
-		}
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					sChromaAnimationAPI.stopAll();
+				}
+			}
+		};
+		timer.schedule(task, 0);
 	}
 
 	@SubscribeEvent
@@ -186,67 +351,81 @@ public class MyForgeEventHandler extends ChromaEffects {
 	}
 
 	private void setupDoorClose() {
-		if (sChromaInitialized) {
-			String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
-			String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
-			sChromaAnimationAPI.closeAnimationName(baseLayer);
-			sChromaAnimationAPI.closeAnimationName(layer2);
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
+					String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
+					sChromaAnimationAPI.closeAnimationName(baseLayer);
+					sChromaAnimationAPI.closeAnimationName(layer2);
 
-			int frameCount = sChromaAnimationAPI.getFrameCountName(layer2);
-			sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
+					int frameCount = sChromaAnimationAPI.getFrameCountName(layer2);
+					sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
 
-			sChromaAnimationAPI.copyNonZeroAllKeysAllFramesName(layer2, baseLayer);
+					sChromaAnimationAPI.copyNonZeroAllKeysAllFramesName(layer2, baseLayer);
 
-			sChromaAnimationAPI.reverseAllFramesName(layer2);
-			sChromaAnimationAPI.addNonZeroAllKeysAllFramesName(layer2, baseLayer);
+					sChromaAnimationAPI.reverseAllFramesName(layer2);
+					sChromaAnimationAPI.addNonZeroAllKeysAllFramesName(layer2, baseLayer);
 
-			sChromaAnimationAPI.trimEndFramesName(baseLayer, 9);
-			sChromaAnimationAPI.insertDelayName(baseLayer, 8, 10);
-			sChromaAnimationAPI.fadeEndFramesName(baseLayer, 5);
+					sChromaAnimationAPI.trimEndFramesName(baseLayer, 9);
+					sChromaAnimationAPI.insertDelayName(baseLayer, 8, 10);
+					sChromaAnimationAPI.fadeEndFramesName(baseLayer, 5);
 
-			int color1 = sChromaAnimationAPI.getRGB(60,40,20);
-			int color2 = sChromaAnimationAPI.getRGB(170,102,15);
-			sChromaAnimationAPI.multiplyNonZeroTargetColorLerpAllFramesName(baseLayer, color1, color2);
+					int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
+					int color2 = sChromaAnimationAPI.getRGB(170, 102, 15);
+					sChromaAnimationAPI.multiplyNonZeroTargetColorLerpAllFramesName(baseLayer, color1, color2);
 
-			sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 0, 48, 0);
+					sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 0, 48, 0);
 
-			sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+					sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
 
-			sChromaAnimationAPI.playAnimationName(baseLayer, false);
-		}
+					sChromaAnimationAPI.playAnimationName(baseLayer, false);
+				}
+			}
+		};
+		timer.schedule(task, 0);
 	}
 
 	private void setupDoorOpen() {
-		if (sChromaInitialized) {
-			String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
-			String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
-			sChromaAnimationAPI.closeAnimationName(baseLayer);
-			sChromaAnimationAPI.closeAnimationName(layer2);
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
+					String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
+					sChromaAnimationAPI.closeAnimationName(baseLayer);
+					sChromaAnimationAPI.closeAnimationName(layer2);
 
-			int frameCount = sChromaAnimationAPI.getFrameCountName(layer2);
-			sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
+					int frameCount = sChromaAnimationAPI.getFrameCountName(layer2);
+					sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
 
-			sChromaAnimationAPI.copyNonZeroAllKeysAllFramesName(layer2, baseLayer);
+					sChromaAnimationAPI.copyNonZeroAllKeysAllFramesName(layer2, baseLayer);
 
-			sChromaAnimationAPI.reverseAllFramesName(layer2);
-			sChromaAnimationAPI.addNonZeroAllKeysAllFramesName(layer2, baseLayer);
+					sChromaAnimationAPI.reverseAllFramesName(layer2);
+					sChromaAnimationAPI.addNonZeroAllKeysAllFramesName(layer2, baseLayer);
 
-			sChromaAnimationAPI.trimEndFramesName(baseLayer, 9);
-			sChromaAnimationAPI.insertDelayName(baseLayer, 8, 10);
-			sChromaAnimationAPI.fadeEndFramesName(baseLayer, 5);
+					sChromaAnimationAPI.trimEndFramesName(baseLayer, 9);
+					sChromaAnimationAPI.insertDelayName(baseLayer, 8, 10);
+					sChromaAnimationAPI.fadeEndFramesName(baseLayer, 5);
 
-			int color1 = sChromaAnimationAPI.getRGB(60,40,20);
-			int color2 = sChromaAnimationAPI.getRGB(170,102,15);
-			sChromaAnimationAPI.multiplyNonZeroTargetColorLerpAllFramesName(baseLayer, color1, color2);
+					int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
+					int color2 = sChromaAnimationAPI.getRGB(170, 102, 15);
+					sChromaAnimationAPI.multiplyNonZeroTargetColorLerpAllFramesName(baseLayer, color1, color2);
 
-			sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 0, 48, 0);
+					sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 0, 48, 0);
 
-			sChromaAnimationAPI.reverseAllFramesName(baseLayer);
+					sChromaAnimationAPI.reverseAllFramesName(baseLayer);
 
-			sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+					sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
 
-			sChromaAnimationAPI.playAnimationName(baseLayer, false);
-		}
+					sChromaAnimationAPI.playAnimationName(baseLayer, false);
+				}
+			}
+		};
+		timer.schedule(task, 0);
 	}
 
 	@SubscribeEvent
@@ -259,6 +438,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			return;
 		}
 
+		//avoid blocking the main thread
 		final BlockPos pos = event.getPos();
 		final World world = event.getWorld();
 		Timer timer = new Timer("Timer");
