@@ -430,6 +430,23 @@ public class MyForgeEventHandler extends ChromaEffects {
 		timer.schedule(task, 0);
 	}
 
+	private void swordAttack() {
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					showEffect3();
+					showEffect3ChromaLink();
+					showEffect3Headset();
+					showEffect3Mousepad();
+					showEffect3Mouse();
+				}
+			}
+		};
+		timer.schedule(task, 0);
+	}
+
 
 	@SubscribeEvent
 	public void handleLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
@@ -439,27 +456,32 @@ public class MyForgeEventHandler extends ChromaEffects {
 				// Only interested in Client thread
 				return;
 		}
-		System.out.println("handleLeftClickEmpty: event="+event+" item in hand: "+event.getPlayer().getHeldItem(event.getHand()));
 		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.DIAMOND_SWORD ||
 				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.GOLDEN_SWORD ||
 				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.IRON_SWORD ||
 				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.STONE_SWORD ||
 				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.WOODEN_SWORD){
 			System.out.println("SWORD ATTACK");
-			//avoid blocking the main thread
-			Timer timer = new Timer("Timer");
-			TimerTask task = new TimerTask() {
-				public void run() {
-					if (sChromaInitialized) {
-						showEffect3();
-						showEffect3ChromaLink();
-						showEffect3Headset();
-						showEffect3Mousepad();
-						showEffect3Mouse();
-					}
-				}
-			};
-			timer.schedule(task, 0);
+			swordAttack();
+		}
+	}
+
+
+	@SubscribeEvent
+	public void handleLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
+		String threadName = Thread.currentThread().getName();
+		switch (threadName) {
+			case "Server thread":
+				// Only interested in Client thread
+				return;
+		}
+		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.DIAMOND_SWORD ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.GOLDEN_SWORD ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.IRON_SWORD ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.STONE_SWORD ||
+				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.WOODEN_SWORD){
+			System.out.println("SWORD ATTACK");
+			swordAttack();
 		}
 	}
 
