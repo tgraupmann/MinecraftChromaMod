@@ -645,7 +645,7 @@ public class ChromaEffects {
         sChromaAnimationAPI.setChromaCustomFlagName(baseLayer, true);
         sChromaAnimationAPI.setChromaCustomColorAllFramesName(baseLayer);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect9ChromaLink()
     {
@@ -660,7 +660,7 @@ public class ChromaEffects {
         int color2 = sChromaAnimationAPI.getRGB(255, 255, 0);
         sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect9Headset()
     {
@@ -675,7 +675,7 @@ public class ChromaEffects {
         int color2 = sChromaAnimationAPI.getRGB(255, 255, 0);
         sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect9Mousepad()
     {
@@ -690,7 +690,7 @@ public class ChromaEffects {
         int color2 = sChromaAnimationAPI.getRGB(255, 255, 0);
         sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect9Mouse()
     {
@@ -705,7 +705,7 @@ public class ChromaEffects {
         int color2 = sChromaAnimationAPI.getRGB(255, 255, 0);
         sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect10()
     {
@@ -824,7 +824,7 @@ public class ChromaEffects {
         sChromaAnimationAPI.setChromaCustomFlagName(baseLayer, true);
         sChromaAnimationAPI.setChromaCustomColorAllFramesName(baseLayer);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect11ChromaLink()
     {
@@ -837,7 +837,7 @@ public class ChromaEffects {
         sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
         sChromaAnimationAPI.duplicateFramesName(baseLayer);
         sChromaAnimationAPI.duplicateFramesName(baseLayer);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect11Headset()
     {
@@ -851,7 +851,7 @@ public class ChromaEffects {
         sChromaAnimationAPI.duplicateFramesName(baseLayer);
         sChromaAnimationAPI.duplicateFramesName(baseLayer);
         sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect11Mousepad()
     {
@@ -865,7 +865,7 @@ public class ChromaEffects {
         sChromaAnimationAPI.duplicateFramesName(baseLayer);
         sChromaAnimationAPI.duplicateFramesName(baseLayer);
         sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect11Mouse()
     {
@@ -879,7 +879,7 @@ public class ChromaEffects {
         sChromaAnimationAPI.duplicateFramesName(baseLayer);
         sChromaAnimationAPI.duplicateFramesName(baseLayer);
         sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect12()
     {

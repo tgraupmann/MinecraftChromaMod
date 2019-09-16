@@ -44,6 +44,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 		public boolean mAlive = true;
 		public boolean mInAir = false;
 		public boolean mOnGround = true;
+		public boolean mOnLadder = false;
 		public boolean mInLava = false;
 		public boolean mInWater = false;
 	}
@@ -315,19 +316,6 @@ public class MyForgeEventHandler extends ChromaEffects {
 		timer.schedule(task, 0);
 	}
 
-	void setupChestClose() {
-		//avoid blocking the main thread
-		Timer timer = new Timer("Timer");
-		TimerTask task = new TimerTask() {
-			public void run() {
-				if (sChromaInitialized) {
-					sChromaAnimationAPI.stopAll();
-				}
-			}
-		};
-		timer.schedule(task, 0);
-	}
-
 	@SubscribeEvent
 	public void handlePlayerContainerEvent(PlayerContainerEvent event) {
 		/*
@@ -347,7 +335,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 				setupChestOpen();
 			} else if (event.getClass() == PlayerContainerEvent.Close.class) {
 				System.out.println("Chest Closed");
-				setupChestClose();
+				stopAll();
 			}
 		}
 	}
@@ -489,7 +477,6 @@ public class MyForgeEventHandler extends ChromaEffects {
 	@SubscribeEvent
 	public void handleRightClickBlock(RightClickBlock event) {
 		String threadName = Thread.currentThread().getName();
-		//System.out.println("handleRightClickBlock: thread="+threadName);
 		switch (threadName) {
 		case "Server thread":
 			// Only interested in Client thread
@@ -533,20 +520,108 @@ public class MyForgeEventHandler extends ChromaEffects {
 		timer.schedule(task, delay);
 	}
 
-	private void setupInWater() {
-		if (sChromaInitialized) {
-			showEffect11();
-			showEffect11ChromaLink();
-			showEffect11Headset();
-			showEffect11Mousepad();
-			showEffect11Mouse();
+	@SubscribeEvent
+	void handlePlayerTickEvent(PlayerTickEvent event) {
+		String threadName = Thread.currentThread().getName();
+		switch (threadName) {
+			case "Server thread":
+				// Only interested in Client thread
+				return;
+		}
+
+		if (event.player.isInWater() && !mPlayerState.mInWater) {
+			mPlayerState.mInWater = true;
+			System.out.println("Player is in Water");
+			setupInWater();
+		}
+		if (!event.player.isInWater() && mPlayerState.mInWater) {
+			mPlayerState.mInWater = false;
+			System.out.println("Player is not in Water");
+			stopAll();
+		}
+
+		if (event.player.onGround && !mPlayerState.mOnGround) {
+			mPlayerState.mOnGround = true;
+			//System.out.println("Player is on ground");
+		}
+		if (!event.player.onGround && mPlayerState.mOnGround) {
+			mPlayerState.mOnGround = false;
+			//System.out.println("Player is not on the ground");
+		}
+
+		if (event.player.isAirBorne && !mPlayerState.mInAir) {
+			mPlayerState.mInAir = true;
+			//System.out.println("Player is in the air");
+		}
+		if (!event.player.isAirBorne && mPlayerState.mInAir) {
+			mPlayerState.mInAir = false;
+			//System.out.println("Player is not in the air");
+		}
+
+		if (!event.player.isAlive() && mPlayerState.mAlive) {
+			mPlayerState.mAlive = false;
+			System.out.println("Player is Dead");
+		}
+		if (event.player.isAlive() && !mPlayerState.mAlive) {
+			mPlayerState.mAlive = true;
+			System.out.println("Player is Alive");
+		}
+
+		if (event.player.isInLava() && !mPlayerState.mInLava) {
+			mPlayerState.mInLava = true;
+			System.out.println("Player is in Lava");
+		}
+		if (!event.player.isInLava() && mPlayerState.mInLava) {
+			mPlayerState.mInLava = false;
+			System.out.println("Player is not in Lava");
+		}
+
+		if (event.player.isOnLadder() && !mPlayerState.mOnLadder) {
+			mPlayerState.mOnLadder = true;
+			System.out.println("Player is on ladder");
+			if (sChromaInitialized) {
+				showEffect9();
+				showEffect9ChromaLink();
+				showEffect9Headset();
+				showEffect9Mousepad();
+				showEffect9Mouse();
+			}
+		}
+		if (!event.player.isOnLadder() && mPlayerState.mOnLadder) {
+			mPlayerState.mOnLadder = false;
+			System.out.println("Player is not on ladder");
+			stopAll();
 		}
 	}
 
-	private void setupOutOfWater() {
-		if (sChromaInitialized) {
-			sChromaAnimationAPI.stopAll();
-		}
+	private void setupInWater() {
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					showEffect11();
+					showEffect11ChromaLink();
+					showEffect11Headset();
+					showEffect11Mousepad();
+					showEffect11Mouse();
+				}
+			}
+		};
+		timer.schedule(task, 0);
+	}
+
+	private void stopAll() {
+		//avoid blocking the main thread
+		Timer timer = new Timer("Timer");
+		TimerTask task = new TimerTask() {
+			public void run() {
+				if (sChromaInitialized) {
+					sChromaAnimationAPI.stopAll();
+				}
+			}
+		};
+		timer.schedule(task, 0);
 	}
 
 	@SubscribeEvent
@@ -709,57 +784,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			System.out.println("Player respawned");
 			break;
 		case "PlayerTickEvent": // net.minecraftforge.fml.common.gameevent.TickEvent$PlayerTickEvent
-		{
-			PlayerTickEvent tickEvent = (PlayerTickEvent) event;
-
-			if (tickEvent.player.isInWater() && !mPlayerState.mInWater) {
-				mPlayerState.mInWater = true;
-				System.out.println("Player is in Water");
-				setupInWater();
-			}
-			if (!tickEvent.player.isInWater() && mPlayerState.mInWater) {
-				mPlayerState.mInWater = false;
-				System.out.println("Player is not in Water");
-				setupOutOfWater();
-			}
-
-			if (tickEvent.player.onGround && !mPlayerState.mOnGround) {
-				mPlayerState.mOnGround = true;
-				//System.out.println("Player is on ground");
-			}
-			if (!tickEvent.player.onGround && mPlayerState.mOnGround) {
-				mPlayerState.mOnGround = false;
-				//System.out.println("Player is not on the ground");
-			}
-
-			if (tickEvent.player.isAirBorne && !mPlayerState.mInAir) {
-				mPlayerState.mInAir = true;
-				//System.out.println("Player is in the air");
-			}
-			if (!tickEvent.player.isAirBorne && mPlayerState.mInAir) {
-				mPlayerState.mInAir = false;
-				//System.out.println("Player is not in the air");
-			}
-
-			if (!tickEvent.player.isAlive() && mPlayerState.mAlive) {
-				mPlayerState.mAlive = false;
-				System.out.println("Player is Dead");
-			}
-			if (tickEvent.player.isAlive() && !mPlayerState.mAlive) {
-				mPlayerState.mAlive = true;
-				System.out.println("Player is Alive");
-			}
-
-			if (tickEvent.player.isInLava() && !mPlayerState.mInLava) {
-				mPlayerState.mInLava = true;
-				System.out.println("Player is in Lava");
-			}
-			if (!tickEvent.player.isInLava() && mPlayerState.mInLava) {
-				mPlayerState.mInLava = false;
-				System.out.println("Player is not in Lava");
-			}
 			break;
-		}
 		default:
 			String className = event.getClass().getSimpleName();
 			if (!mEvents.contains(className)) {
