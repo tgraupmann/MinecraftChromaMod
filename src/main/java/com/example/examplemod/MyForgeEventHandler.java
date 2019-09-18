@@ -11,6 +11,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.item.minecart.MinecartEntity;
 import net.minecraft.entity.monster.CreeperEntity;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.entity.passive.PigEntity;
@@ -21,8 +22,10 @@ import net.minecraft.state.StateHolder;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
@@ -47,6 +50,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 		public boolean mOnLadder = false;
 		public boolean mInLava = false;
 		public boolean mInWater = false;
+		public boolean mInMinecart = false;
+		public boolean mIsRaining = false;
+		public boolean mIsSnowing = false;
+		public BlockPos mPosition = BlockPos.ZERO;
 	}
 
 	private PlayerState mPlayerState = new PlayerState();
@@ -60,7 +67,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 	private boolean mWaitForExit = true;
 
 	private void logMessage(String msg) {
-		//System.out.println(msg);
+		System.out.println(msg);
 	}
 
 	private void addChromaTask(TimerTask task) {
@@ -190,7 +197,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 
 	@SubscribeEvent
-	public void handleStop(FMLServerStartingEvent event) {
+	public void handleStart(FMLServerStartingEvent event) {
 		init();
 	}
 
@@ -491,36 +498,6 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 
 	@SubscribeEvent
-	public void handleBiomeEvent(BiomeEvent event) {
-		String threadName = Thread.currentThread().getName();
-		switch (threadName) {
-			case "Server thread":
-				// Only interested in Client thread
-				return;
-		}
-
-		if (event.getBiome() == Biomes.SNOWY_BEACH ||
-				event.getBiome() == Biomes.SNOWY_MOUNTAINS ||
-				event.getBiome() == Biomes.SNOWY_TAIGA ||
-				event.getBiome() == Biomes.SNOWY_TAIGA_MOUNTAINS ||
-				event.getBiome() == Biomes.SNOWY_TUNDRA) {
-			TimerTask task = new TimerTask() {
-				public void run() {
-					if (mChromaInitialized) {
-						showEffect21();
-						showEffect21ChromaLink();
-						showEffect21Headset();
-						showEffect21Mousepad();
-						showEffect21Mouse();
-					}
-				}
-			};
-			addChromaTask(task);
-		}
-	}
-
-
-	@SubscribeEvent
 	public void handleLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
 		String threadName = Thread.currentThread().getName();
 		switch (threadName) {
@@ -723,7 +700,61 @@ public class MyForgeEventHandler extends ChromaEffects {
 	}
 
 	@SubscribeEvent
+	void handleWorldTickEvent(TickEvent.WorldTickEvent event) {
+
+		boolean isSnowing = false;
+		boolean isRaining = false;
+		if (event.world.isRainingAt(mPlayerState.mPosition)) {
+			Biome biome = event.world.getBiome(mPlayerState.mPosition);
+			if (biome == Biomes.SNOWY_BEACH ||
+					biome == Biomes.SNOWY_MOUNTAINS ||
+					biome == Biomes.SNOWY_TAIGA ||
+					biome == Biomes.SNOWY_TAIGA_MOUNTAINS ||
+					biome == Biomes.SNOWY_TUNDRA) {
+				isSnowing = true;
+			} else {
+				isRaining = true;
+			}
+		}
+
+		if (isRaining && !mPlayerState.mIsRaining) {
+			mPlayerState.mIsRaining = true;
+			logMessage("Player is in the rain");
+			if (mChromaInitialized) {
+				showEffect22();
+				showEffect22ChromaLink();
+				showEffect22Headset();
+				showEffect22Mousepad();
+				showEffect22Mouse();
+			}
+		}
+		else if (!isRaining && mPlayerState.mIsRaining) {
+			mPlayerState.mIsRaining = false;
+			logMessage("Player is not in the rain");
+			stopAll();
+		}
+
+		if (isSnowing && !mPlayerState.mIsSnowing) {
+			mPlayerState.mIsSnowing = true;
+			logMessage("Player is in the snow");
+			if (mChromaInitialized) {
+				showEffect21();
+				showEffect21ChromaLink();
+				showEffect21Headset();
+				showEffect21Mousepad();
+				showEffect21Mouse();
+			}
+		}
+		else if (!isSnowing && mPlayerState.mIsSnowing) {
+			mPlayerState.mIsSnowing = false;
+			logMessage("Player is not in the snow");
+			stopAll();
+		}
+	}
+
+	@SubscribeEvent
 	void handlePlayerTickEvent(PlayerTickEvent event) {
+
 		String threadName = Thread.currentThread().getName();
 		switch (threadName) {
 			case "Server thread":
@@ -731,12 +762,14 @@ public class MyForgeEventHandler extends ChromaEffects {
 				return;
 		}
 
+		mPlayerState.mPosition = event.player.getPosition();
+
 		if (event.player.isInWater() && !mPlayerState.mInWater) {
 			mPlayerState.mInWater = true;
 			logMessage("Player is in Water");
 			setupInWater();
 		}
-		if (!event.player.isInWater() && mPlayerState.mInWater) {
+		else if (!event.player.isInWater() && mPlayerState.mInWater) {
 			mPlayerState.mInWater = false;
 			logMessage("Player is not in Water");
 			stopAll();
@@ -746,7 +779,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			mPlayerState.mOnGround = true;
 			//logMessage("Player is on ground");
 		}
-		if (!event.player.onGround && mPlayerState.mOnGround) {
+		else if (!event.player.onGround && mPlayerState.mOnGround) {
 			mPlayerState.mOnGround = false;
 			//logMessage("Player is not on the ground");
 		}
@@ -755,7 +788,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			mPlayerState.mInAir = true;
 			//logMessage("Player is in the air");
 		}
-		if (!event.player.isAirBorne && mPlayerState.mInAir) {
+		else if (!event.player.isAirBorne && mPlayerState.mInAir) {
 			mPlayerState.mInAir = false;
 			//logMessage("Player is not in the air");
 		}
@@ -764,7 +797,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			mPlayerState.mAlive = false;
 			logMessage("Player is Dead");
 		}
-		if (event.player.isAlive() && !mPlayerState.mAlive) {
+		else if (event.player.isAlive() && !mPlayerState.mAlive) {
 			mPlayerState.mAlive = true;
 			logMessage("Player is Alive");
 		}
@@ -773,7 +806,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			mPlayerState.mInLava = true;
 			logMessage("Player is in Lava");
 		}
-		if (!event.player.isInLava() && mPlayerState.mInLava) {
+		else if (!event.player.isInLava() && mPlayerState.mInLava) {
 			mPlayerState.mInLava = false;
 			logMessage("Player is not in Lava");
 		}
@@ -789,11 +822,29 @@ public class MyForgeEventHandler extends ChromaEffects {
 				showEffect9Mouse();
 			}
 		}
-		if (!event.player.isOnLadder() && mPlayerState.mOnLadder) {
+		else if (!event.player.isOnLadder() && mPlayerState.mOnLadder) {
 			mPlayerState.mOnLadder = false;
 			logMessage("Player is not on ladder");
 			stopAll();
 		}
+
+		if (event.player.getRidingEntity() instanceof MinecartEntity && !mPlayerState.mInMinecart)  {
+			mPlayerState.mInMinecart = true;
+			logMessage("Player is in the minecart");
+			if (mChromaInitialized) {
+				showEffect6();
+				showEffect6ChromaLink();
+				showEffect6Headset();
+				showEffect6Mousepad();
+				showEffect6Mouse();
+			}
+		}
+		else if (!(event.player.getRidingEntity() instanceof MinecartEntity) && mPlayerState.mInMinecart)  {
+			mPlayerState.mInMinecart = false;
+			logMessage("Player is not in the minecart");
+			stopAll();
+		}
+
 	}
 
 	private void setupInWater() {

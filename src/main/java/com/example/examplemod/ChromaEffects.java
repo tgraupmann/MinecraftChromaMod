@@ -382,7 +382,7 @@ public class ChromaEffects {
         sChromaAnimationAPI.setChromaCustomFlagName(baseLayer, true);
         sChromaAnimationAPI.setChromaCustomColorAllFramesName(baseLayer);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect6ChromaLink()
     {
@@ -397,7 +397,7 @@ public class ChromaEffects {
         int color2 = sChromaAnimationAPI.getRGB(255, 69, 0);
         sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect6Headset()
     {
@@ -412,7 +412,7 @@ public class ChromaEffects {
         int color2 = sChromaAnimationAPI.getRGB(255, 69, 0);
         sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect6Mousepad()
     {
@@ -427,7 +427,7 @@ public class ChromaEffects {
         int color2 = sChromaAnimationAPI.getRGB(255, 69, 0);
         sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect6Mouse()
     {
@@ -442,7 +442,7 @@ public class ChromaEffects {
         int color2 = sChromaAnimationAPI.getRGB(255, 69, 0);
         sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
     public static void showEffect7()
     {
