@@ -49,7 +49,7 @@ public class Main
         LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
         
         sMyForgeEventHandler = new MyForgeEventHandler();
-		sMyForgeEventHandler.init();
+		sMyForgeEventHandler.register();
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
