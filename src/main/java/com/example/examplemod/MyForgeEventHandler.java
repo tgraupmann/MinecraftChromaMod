@@ -23,6 +23,7 @@ import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.biome.Biomes;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
@@ -702,14 +703,20 @@ public class MyForgeEventHandler extends ChromaEffects {
 		boolean isRaining = false;
 		boolean isSnowing = false;
 		if (event.world.isRainingAt(mPlayerState.mPosition)) {
-			Biome biome = event.world.getBiome(mPlayerState.mPosition);
-			switch (biome.getPrecipitation()) {
-				case RAIN:
-					isRaining = true;
-					break;
-				case SNOW:
-					isSnowing = true;
-					break;
+			BlockState blockState = event.world.getBlockState(mPlayerState.mPosition);
+			if (blockState.getBlock() == Blocks.SNOW ||
+					blockState.getBlock() == Blocks.SNOW_BLOCK) {
+				isSnowing = true;
+			} else {
+				Biome biome = event.world.getBiome(mPlayerState.mPosition);
+				switch (biome.getPrecipitation()) {
+					case RAIN:
+						isRaining = true;
+						break;
+					case SNOW:
+						isSnowing = true;
+						break;
+				}
 			}
 		}
 
@@ -732,7 +739,9 @@ public class MyForgeEventHandler extends ChromaEffects {
 		else if (!isRaining && mPlayerState.mIsRaining) {
 			mPlayerState.mIsRaining = false;
 			logMessage("Player is not in the rain");
-			stopAll();
+			if (!isSnowing) {
+				stopAll();
+			}
 		}
 
 		if (isSnowing && !mPlayerState.mIsSnowing) {
@@ -754,7 +763,9 @@ public class MyForgeEventHandler extends ChromaEffects {
 		else if (!isSnowing && mPlayerState.mIsSnowing) {
 			mPlayerState.mIsSnowing = false;
 			logMessage("Player is not in the snow");
-			stopAll();
+			if (!isRaining) {
+				stopAll();
+			}
 		}
 	}
 
