@@ -12,6 +12,10 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 <a target="_blank" href="https://youtu.be/7Ey3PRJa72Y"><img src="https://img.youtube.com/vi/7Ey3PRJa72Y/0.jpg"></a>
 
+**Weather**
+
+<a target="_blank" href="https://youtu.be/kFtd75cmfeo"><img src="https://img.youtube.com/vi/kFtd75cmfeo/0.jpg"></a>
+
 
 ## Quick Setup
 
