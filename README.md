@@ -10,6 +10,7 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 ## Table of Contents
 
 * [See Also](#see-also)
+* [Videos](#videos)
 * [Quick Setup](#quick-setup)
 
 ## See Also
@@ -38,6 +39,8 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 - [UnityNativeChromaSDK](https://github.com/RazerOfficial/UnityNativeChromaSDK) - Unity native library for the ChromaSDK
 
+
+## Videos ##
 
 **Intro Video**
 
