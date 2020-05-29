@@ -62,7 +62,7 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 * Set the `JAVA_HOME` environment variable to the path of the 64-bit version of the JDK. Gradle will report out of memory with the 32-bit JDK version which can be fixed in the `gradle.properties` file if you have to.
 
-* Install the latest MinecraftForge server and client using the [Windows Installer for 1.12](https://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.12.2.html)
+* Install the latest MinecraftForge server and client using the [Windows Installer for 1.14](https://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.14.4.html)
 
 
 **Upgrade Gradle to 5.6.1 or better**
