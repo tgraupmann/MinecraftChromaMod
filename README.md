@@ -60,31 +60,31 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 * Install [JDK 1.8 or better](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
+* You can also use [OpenJDK](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=hotspot). Use `OpenJDK 8 (LTS)`
+
 * Set the `JAVA_HOME` environment variable to the path of the 64-bit version of the JDK. Gradle will report out of memory with the 32-bit JDK version which can be fixed in the `gradle.properties` file if you have to.
 
-* Install the latest MinecraftForge server and client using the [Windows Installer for 1.14](https://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.14.4.html)
+* Install the latest MinecraftForge `server` and `client` using the [Windows Installer for 1.14](https://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.14.4.html)
 
+**Above: Install the Server and Client**
 
-**Upgrade Gradle to 5.6.1 or better**
+* Make sure you do both for the Minecraft Forge handshake to work.
 
-```
-gradlew wrapper --gradle-version=5.6.1﻿
-```
+* That means double-click `forge-1.14.4-28.2.0-installer.jar` and use the UI to install both.
 
+**Get the mod**
 
-**Check the Gradle Version**
+* Download to a folder like:
+```C:\Minecraft\forge-1.14.4-28.2.0-mdk```
 
-```
-gradlew -v
-```
+* Make sure the path isn't too long to avoid compile errors.
 
 
 **Generate Eclipse Project**
 
 ```
-gradlew eclipse
+gradlew genEclipseRuns
 ```
-
 
 **Start the mod**
 

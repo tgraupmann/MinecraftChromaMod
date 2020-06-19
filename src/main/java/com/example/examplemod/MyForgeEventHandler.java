@@ -65,7 +65,11 @@ public class MyForgeEventHandler extends ChromaEffects {
 	private boolean mWaitForExit = true;
 
 	private void logMessage(String msg) {
-		//System.out.println(msg);
+		System.out.println(msg);
+	}
+	
+	private void logError(String msg) {
+		System.err.println(msg);
 	}
 
 	private void addChromaTask(TimerTask task) {
@@ -105,7 +109,9 @@ public class MyForgeEventHandler extends ChromaEffects {
 		int result = sChromaAnimationAPI.init();
 		if (result == 0) {
 			mChromaInitialized = true;
+			logMessage("*****Initialized ChromaSDK!");
 		} else {
+			logError("******* Failed to initialize ChromaSDK!");
 			mChromaInitialized = false;
 		}
 

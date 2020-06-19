@@ -1,0 +1,2 @@
+CALL gradlew genEclipseRuns
+PAUSE
