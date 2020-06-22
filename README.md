@@ -88,7 +88,39 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 gradlew genEclipseRuns
 ```
 
-**Start the mod**
+** Launch Eclipse **
+
+** Use the `File-&gt;Import` menu item**
+
+![image_1](images/image_1.png)
+
+** Select `Gradle\Existing Gradle Project` and click `Next`
+
+![image_2](images/image_2.png)
+
+** Browse to the `MinecraftChromaMod` folder and click `Finish`
+
+![image_3](images/image_3.png)
+
+** If the import is successful, the project shouldn't have any compile errors. **
+
+![image_4](images/image_4.png)
+
+** Use the `Run` toolbar drop down
+
+![image_5](images/image_5.png)
+
+** Select `Run Configurations...` **
+
+![image_6](images/image_6.png)
+
+** Start the mod (from Eclipse) **
+
+* Select the `Java Application` -&gt; `runClient` and click `Run`
+
+![image_7](images/image_7.png)
+
+**Start the mod (on the command-line) **
 
 ```
 gradlew runClient
