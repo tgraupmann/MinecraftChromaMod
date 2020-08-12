@@ -69,6 +69,17 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, false);
     }
+    public static void showEffect1Keypad()
+    {
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int color1 = sChromaAnimationAPI.getRGB(150, 100, 60);
+        int color2 = sChromaAnimationAPI.getRGB(0, 0, 0);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
     public static void showEffect2()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
@@ -130,6 +141,17 @@ public class ChromaEffects {
     public static void showEffect2Mouse()
     {
         String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
+        int color2 = sChromaAnimationAPI.getRGB(170, 102, 15);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
+    public static void showEffect2Keypad()
+    {
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Keypad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
@@ -207,6 +229,17 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, false);
     }
+    public static void showEffect3Keypad()
+    {
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int color1 = sChromaAnimationAPI.getRGB(255, 255, 245);
+        int color2 = sChromaAnimationAPI.getRGB(127, 127, 127);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
     public static void showEffect4()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
@@ -265,6 +298,18 @@ public class ChromaEffects {
     public static void showEffect4Mouse()
     {
         String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        sChromaAnimationAPI.reverseAllFramesName(baseLayer);
+        int color1 = sChromaAnimationAPI.getRGB(255, 0, 0);
+        int color2 = sChromaAnimationAPI.getRGB(0, 45, 45);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
+    public static void showEffect4Keypad()
+    {
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Keypad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         sChromaAnimationAPI.reverseAllFramesName(baseLayer);
@@ -361,6 +406,21 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, false);
     }
+    public static void showEffect5Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(34, 102, 34);
+        int color2 = sChromaAnimationAPI.getRGB(153, 105, 46);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
     public static void showEffect6()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
@@ -432,6 +492,21 @@ public class ChromaEffects {
     public static void showEffect6Mouse()
     {
         String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(54, 54, 5);
+        int color2 = sChromaAnimationAPI.getRGB(255, 69, 0);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
+    }
+    public static void showEffect6Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -520,6 +595,17 @@ public class ChromaEffects {
     public static void showEffect7Mouse()
     {
         String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int color1 = sChromaAnimationAPI.getRGB(0, 45, 45);
+        int color2 = sChromaAnimationAPI.getRGB(249, 194, 126);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
+    public static void showEffect7Keypad()
+    {
+        String baseLayer = getAnimationPath()+"BlackAndWhiteRainbow_Keypad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int color1 = sChromaAnimationAPI.getRGB(0, 45, 45);
@@ -621,6 +707,22 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, false);
     }
+    public static void showEffect8Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 8;
+        sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
+        sChromaAnimationAPI.fillRandomColorsBlackAndWhiteAllFramesName(baseLayer);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
+        int color1 = sChromaAnimationAPI.getRGB(255, 0, 0);
+        int color2 = sChromaAnimationAPI.getRGB(64, 0, 0);
+        sChromaAnimationAPI.multiplyNonZeroTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
     public static void showEffect9()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
@@ -695,6 +797,21 @@ public class ChromaEffects {
     public static void showEffect9Mouse()
     {
         String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(255, 105, 20);
+        int color2 = sChromaAnimationAPI.getRGB(255, 255, 0);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
+    }
+    public static void showEffect9Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -794,6 +911,21 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, false);
     }
+    public static void showEffect10Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(124, 164, 124);
+        int color2 = sChromaAnimationAPI.getRGB(215, 215, 215);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
     public static void showEffect11()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
@@ -870,6 +1002,20 @@ public class ChromaEffects {
     public static void showEffect11Mouse()
     {
         String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 8;
+        sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
+        sChromaAnimationAPI.fillRandomColorsBlackAndWhiteAllFramesName(baseLayer);
+        sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
+        sChromaAnimationAPI.duplicateFramesName(baseLayer);
+        sChromaAnimationAPI.multiplyIntensityAllFramesRGBName(baseLayer, 0, 255, 255);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
+    }
+    public static void showEffect11Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 8;
@@ -966,6 +1112,21 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, false);
     }
+    public static void showEffect12Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(255, 201, 136);
+        int color2 = sChromaAnimationAPI.getRGB(0, 45, 45);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
     public static void showEffect13()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
@@ -1038,6 +1199,21 @@ public class ChromaEffects {
     public static void showEffect13Mouse()
     {
         String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(0, 64, 255);
+        int color2 = sChromaAnimationAPI.getRGB(64, 64, 64);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
+    public static void showEffect13Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1131,6 +1307,21 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, false);
     }
+    public static void showEffect14Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(181, 101, 82);
+        int color2 = sChromaAnimationAPI.getRGB(230, 202, 189);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
     public static void showEffect15()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
@@ -1202,6 +1393,21 @@ public class ChromaEffects {
     public static void showEffect15Mouse()
     {
         String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(255, 255, 255);
+        int color2 = sChromaAnimationAPI.getRGB(127, 127, 127);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
+    public static void showEffect15Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1298,6 +1504,21 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, false);
     }
+    public static void showEffect16Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(0, 0, 255);
+        int color2 = sChromaAnimationAPI.getRGB(255, 0, 0);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
     public static void showEffect17()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
@@ -1366,6 +1587,21 @@ public class ChromaEffects {
     public static void showEffect17Mouse()
     {
         String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(255, 0, 0);
+        int color2 = sChromaAnimationAPI.getRGB(0, 255, 0);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
+    public static void showEffect17Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1462,6 +1698,21 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, false);
     }
+    public static void showEffect18Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(255, 255, 0);
+        int color2 = sChromaAnimationAPI.getRGB(0, 255, 255);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
     public static void showEffect19()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
@@ -1543,6 +1794,21 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, false);
     }
+    public static void showEffect19Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(0, 255, 0);
+        int color2 = sChromaAnimationAPI.getRGB(0, 255, 255);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
     public static void showEffect20()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
@@ -1611,6 +1877,21 @@ public class ChromaEffects {
     public static void showEffect20Mouse()
     {
         String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(255, 255, 255);
+        int color2 = sChromaAnimationAPI.getRGB(0, 0, 255);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, false);
+    }
+    public static void showEffect20Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;
@@ -1704,6 +1985,21 @@ public class ChromaEffects {
         sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
         sChromaAnimationAPI.playAnimationName(baseLayer, true);
     }
+    public static void showEffect21Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(255, 255, 255);
+        int color2 = sChromaAnimationAPI.getRGB(0, 255, 255);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
+    }
     public static void showEffect22()
     {
         String baseLayer = getAnimationPath()+"Blank_Keyboard.chroma";
@@ -1774,6 +2070,21 @@ public class ChromaEffects {
     public static void showEffect22Mouse()
     {
         String baseLayer = getAnimationPath()+"Blank_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        int frameCount = 50;
+        sChromaAnimationAPI.makeBlankFramesRGBName(baseLayer, frameCount, 0.1f, 255, 255, 255);
+        sChromaAnimationAPI.fadeStartFramesName(baseLayer, frameCount / 2);
+        sChromaAnimationAPI.fadeEndFramesName(baseLayer, frameCount / 2);
+        int color1 = sChromaAnimationAPI.getRGB(0, 255, 255);
+        int color2 = sChromaAnimationAPI.getRGB(64, 64, 255);
+        sChromaAnimationAPI.multiplyTargetColorLerpAllFramesName(baseLayer, color1, color2);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
+    }
+    public static void showEffect22Keypad()
+    {
+        String baseLayer = getAnimationPath()+"Blank_Keypad.chroma";
         sChromaAnimationAPI.closeAnimationName(baseLayer);
         sChromaAnimationAPI.getAnimation(baseLayer);
         int frameCount = 50;

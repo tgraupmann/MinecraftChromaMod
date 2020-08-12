@@ -234,6 +234,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 					showEffect4Headset();
 					showEffect4Mousepad();
 					showEffect4Mouse();
+          showEffect4Keypad();
 				}
 			}
 		};
@@ -260,6 +261,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 					showEffect7Headset();
 					showEffect7Mousepad();
 					showEffect7Mouse();
+          showEffect7Keypad();
 				}
 			}
 		};
@@ -290,6 +292,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect10Headset();
 						showEffect10Mousepad();
 						showEffect10Mouse();
+            showEffect10Keypad();
 					}
 				}
 			}
@@ -317,6 +320,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 					showEffect5Headset();
 					showEffect5Mousepad();
 					showEffect5Mouse();
+          showEffect5Keypad();
 				}
 			}
 		};
@@ -349,6 +353,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 							showEffect12Headset();
 							showEffect12Mousepad();
 							showEffect12Mouse();
+              showEffect12Keypad();
 						}
 					}
 				} else if (event.getEntityLiving() instanceof ChickenEntity) {
@@ -360,6 +365,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 							showEffect15Headset();
 							showEffect15Mousepad();
 							showEffect15Mouse();
+              showEffect15Keypad();
 						}
 					}
 				}
@@ -378,6 +384,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 					showEffect13Headset();
 					showEffect13Mousepad();
 					showEffect13Mouse();
+          showEffect13Keypad();
 				}
 			}
 		};
@@ -494,6 +501,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 					showEffect3Headset();
 					showEffect3Mousepad();
 					showEffect3Mouse();
+          showEffect3Keypad();
 				}
 			}
 		};
@@ -553,6 +561,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect17Headset();
 						showEffect17Mousepad();
 						showEffect17Mouse();
+            showEffect17Keypad();
 					}
 				}
 			};
@@ -571,6 +580,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect18Headset();
 						showEffect18Mousepad();
 						showEffect18Mouse();
+            showEffect18Keypad();
 					}
 				}
 			};
@@ -591,6 +601,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect14Headset();
 						showEffect14Mousepad();
 						showEffect14Mouse();
+            showEffect14Keypad();
 					}
 				}
 			};
@@ -621,6 +632,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect17Headset();
 						showEffect17Mousepad();
 						showEffect17Mouse();
+            showEffect17Keypad();
 					}
 				}
 			};
@@ -639,6 +651,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect18Headset();
 						showEffect18Mousepad();
 						showEffect18Mouse();
+            showEffect18Keypad();
 					}
 				}
 			};
@@ -659,6 +672,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect14Headset();
 						showEffect14Mousepad();
 						showEffect14Mouse();
+            showEffect14Keypad();
 					}
 				}
 			};
@@ -737,6 +751,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect22Headset();
 						showEffect22Mousepad();
 						showEffect22Mouse();
+            showEffect22Keypad();
 					}
 				}
 			};
@@ -761,6 +776,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect21Headset();
 						showEffect21Mousepad();
 						showEffect21Mouse();
+            showEffect21Keypad();
 					}
 				}
 			};
@@ -845,6 +861,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect9Headset();
 						showEffect9Mousepad();
 						showEffect9Mouse();
+            showEffect9Keypad();
 					}
 				}
 			};
@@ -867,6 +884,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						showEffect6Headset();
 						showEffect6Mousepad();
 						showEffect6Mouse();
+            showEffect6Keypad();
 					}
 				}
 			};
@@ -890,6 +908,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 					showEffect11Headset();
 					showEffect11Mousepad();
 					showEffect11Mouse();
+          showEffect11Keypad();
 				}
 			}
 		};
