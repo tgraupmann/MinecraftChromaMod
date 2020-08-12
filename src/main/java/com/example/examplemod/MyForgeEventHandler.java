@@ -10,6 +10,8 @@ import com.razer.java.JChromaSDK;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.gui.screen.IngameMenuScreen;
+import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.item.minecart.MinecartEntity;
 import net.minecraft.entity.monster.CreeperEntity;
@@ -24,6 +26,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.Biomes;
+import net.minecraftforge.client.event.GuiScreenEvent;
+import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
@@ -209,6 +213,42 @@ public class MyForgeEventHandler extends ChromaEffects {
 	@SubscribeEvent
 	public void handleStop(FMLServerStoppingEvent event) {
 		uninit();
+	}
+	
+	private boolean _mWasPaused = false;
+	
+	@SubscribeEvent
+	public void handleMainMenu(GuiScreenEvent.InitGuiEvent event) {
+		if (mChromaInitialized) {
+			Screen gui = event.getGui();
+			if (gui instanceof IngameMenuScreen) {
+				//logMessage("Main Menu Open");
+				showEffectMainMenu();
+				showEffectMainMenuChromaLink();
+				showEffectMainMenuHeadset();
+				showEffectMainMenuKeypad();
+				showEffectMainMenuMouse();
+				showEffectMainMenuMousepad();
+				_mWasPaused = true;
+			}
+		}
+	}
+	
+	@SubscribeEvent
+	public void handleScreenEvent(RenderPlayerEvent event) {
+		if (mChromaInitialized) {
+			if (_mWasPaused) {
+				_mWasPaused = false;
+				
+				logMessage("Main Menu Closed");
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_ChromaLink.chroma");
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Headset.chroma");
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Keyboard.chroma");
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Keypad.chroma");
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Mouse.chroma");
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Mousepad.chroma");
+			}
+		}
 	}
 
 

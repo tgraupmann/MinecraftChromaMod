@@ -12,6 +12,55 @@ public class ChromaEffects {
         //System.out.println("********* getAnimationPath: path="+path);
         return path;
     }
+    
+    public static void showEffectMainMenu()
+    {
+        String baseLayer = getAnimationPath()+"Rainbow_Keyboard.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
+    }
+    public static void showEffectMainMenuChromaLink()
+    {
+        String baseLayer = getAnimationPath()+"Rainbow_ChromaLink.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
+    }
+    public static void showEffectMainMenuHeadset()
+    {
+        String baseLayer = getAnimationPath()+"Rainbow_Headset.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
+    }
+    public static void showEffectMainMenuMousepad()
+    {
+        String baseLayer = getAnimationPath()+"Rainbow_Mousepad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
+    }
+    public static void showEffectMainMenuMouse()
+    {
+        String baseLayer = getAnimationPath()+"Rainbow_Mouse.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
+    }
+    public static void showEffectMainMenuKeypad()
+    {
+        String baseLayer = getAnimationPath()+"Rainbow_Keypad.chroma";
+        sChromaAnimationAPI.closeAnimationName(baseLayer);
+        sChromaAnimationAPI.getAnimation(baseLayer);
+        sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+        sChromaAnimationAPI.playAnimationName(baseLayer, true);
+    }
 
     public static void showEffect1()
     {
