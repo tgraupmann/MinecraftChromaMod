@@ -8,7 +8,7 @@ public class ChromaEffects {
     protected static String getAnimationPath() {
         String cd = System.getProperty("user.dir");
         //System.out.println("********* getAnimationPath: cd="+cd);
-        String path = cd + "\\..\\src\\main\\resources\\Animations\\";
+        String path = cd + "\\mods\\MinecraftChromaMod\\Animations\\";
         //System.out.println("********* getAnimationPath: path="+path);
         return path;
     }

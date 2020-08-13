@@ -276,7 +276,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 					showEffect4Headset();
 					showEffect4Mousepad();
 					showEffect4Mouse();
-          showEffect4Keypad();
+					showEffect4Keypad();
 				}
 			}
 		};

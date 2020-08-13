@@ -22,7 +22,7 @@ public class JChromaSDK {
         }
         String cd = System.getProperty("user.dir");
         //System.out.println("********* JChromaSDK: cd="+cd);
-        String path = cd + "\\..\\src\\main\\resources\\";
+        String path = cd + "\\mods\\MinecraftChromaMod";
         //System.out.println("********* JChromaSDK: path="+path);
         String fullPath = path + "\\" + libName;
         //System.out.println("********* JChromaSDK: fullPath="+fullPath);
