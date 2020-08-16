@@ -10,6 +10,7 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 ## Table of Contents
 
 * [See Also](#see-also)
+* [Chroma Effects](#chroma-effects)
 * [Videos](#videos)
 * [Quick Setup](#quick-setup)
 
@@ -38,6 +39,47 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 - [UE4_XDK_SampleApp](https://github.com/razerofficial/UE4_XDK_SampleApp) - UE4 Chroma samples and runtime module with Blueprint library for the ChromaSDK
 
 - [UnityNativeChromaSDK](https://github.com/RazerOfficial/UnityNativeChromaSDK) - Unity native library for the ChromaSDK
+
+
+## Chroma Effects ##
+
+* Base Effect
+
+* Main Menu Effect
+
+* In Water Effect
+
+* Place Block Effect
+
+* Craft Item Effect
+
+* Player Damage Effect
+
+* Fire Arrow Effect
+
+* Kill Pig Effect
+
+* Kill Chicken Effect
+
+* Open Chest Effect
+
+* Open Door Effect
+
+* Close Door Effect
+
+* Sword Attack Effect
+
+* Spawn Fish Effect
+
+* Potion Effect
+
+* Raining Effect
+
+* Snowing Effect
+
+* Ladder Effect
+
+* Riding Cart Effect
 
 
 ## Videos ##
