@@ -843,7 +843,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 				return;
 		}
 
-		mPlayerState.mPosition = event.player.getPosition();
+		mPlayerState.mPosition = new BlockPos(event.player.getPosX(), event.player.getPosY(), event.player.getPosZ());
 
 		if (event.player.isInWater() && !mPlayerState.mInWater) {
 			mPlayerState.mInWater = true;
@@ -856,11 +856,12 @@ public class MyForgeEventHandler extends ChromaEffects {
 			stopAll();
 		}
 
-		if (event.player.onGround && !mPlayerState.mOnGround) {
+		boolean isOnGround = !event.player.isAirBorne && !event.player.isSwimming();
+		if (isOnGround && !mPlayerState.mOnGround) {
 			mPlayerState.mOnGround = true;
 			//logMessage("Player is on ground");
 		}
-		else if (!event.player.onGround && mPlayerState.mOnGround) {
+		else if (!isOnGround && mPlayerState.mOnGround) {
 			mPlayerState.mOnGround = false;
 			//logMessage("Player is not on the ground");
 		}
