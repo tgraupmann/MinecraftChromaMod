@@ -7,7 +7,7 @@ AppSupportURL=https://support.razer.com
 AppUpdatesURL=https://razer.com
 DefaultDirName={userappdata}\.minecraft\mods\MinecraftChromaMod
 DefaultGroupName=Razer\MinecraftChromaMod
-OutputBaseFilename=SetupMinecraftChromaMod
+OutputBaseFilename=SetupMinecraftChromaMod-forge-1.16.3-34.1.0-mdk
 SetupIconFile=release_icon.ico
 UninstallDisplayIcon=release_icon.ico
 Compression=lzma
@@ -18,6 +18,6 @@ InfoBeforeFile=LICENSE.txt
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "build\_renameJarInPlace_6\output.jar"; DestDir: "{userappdata}\.minecraft\mods"; DestName: "modid-1.0.jar"; CopyMode: alwaysoverwrite
+Source: "build\libs\modid-1.0.jar"; DestDir: "{userappdata}\.minecraft\mods"; CopyMode: alwaysoverwrite
 Source: "run\mods\MinecraftChromaMod\*.dll"; DestDir: "{userappdata}\.minecraft\mods\MinecraftChromaMod"; CopyMode: alwaysoverwrite
 Source: "run\mods\MinecraftChromaMod\Animations\*.chroma"; DestDir: "{userappdata}\.minecraft\mods\MinecraftChromaMod\Animations"; CopyMode: alwaysoverwrite

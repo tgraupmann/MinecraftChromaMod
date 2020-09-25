@@ -166,6 +166,14 @@ gradlew genEclipseRuns
 gradlew runClient
 ```
 
+**Build the `build\libs\modid-1.0.jar`**
+
+```
+gradlew build
+```
+
+**Build the installer with InnoSetup**
+
 ## Support
 
 Contact `Tim Graupmann#0611` on Discord for mod support.
