@@ -18,6 +18,6 @@ InfoBeforeFile=LICENSE.txt
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Files]
-Source: "build\libs\modid-1.0.jar"; DestDir: "{userappdata}\.minecraft\mods"; CopyMode: alwaysoverwrite
+Source: "build\_renameJarInPlace_6\output.jar"; DestDir: "{userappdata}\.minecraft\mods"; DestName: "modid-1.0.jar"; CopyMode: alwaysoverwrite
 Source: "run\mods\MinecraftChromaMod\*.dll"; DestDir: "{userappdata}\.minecraft\mods\MinecraftChromaMod"; CopyMode: alwaysoverwrite
 Source: "run\mods\MinecraftChromaMod\Animations\*.chroma"; DestDir: "{userappdata}\.minecraft\mods\MinecraftChromaMod\Animations"; CopyMode: alwaysoverwrite

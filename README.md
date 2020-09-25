@@ -106,18 +106,18 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 * Set the `JAVA_HOME` environment variable to the path of the 64-bit version of the JDK. Gradle will report out of memory with the 32-bit JDK version which can be fixed in the `gradle.properties` file if you have to.
 
-* Install the latest MinecraftForge `server` and `client` using the [Windows Installer for 1.14](https://files.minecraftforge.net/maven/net/minecraftforge/forge/index_1.14.4.html)
+* Install the latest MinecraftForge `server` and `client` using the [Windows Installer for 1.16.3](https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.3-34.1.0/forge-1.16.3-34.1.0-installer.jar)
 
 **Above: Install the Server and Client**
 
 * Make sure you do both for the Minecraft Forge handshake to work.
 
-* That means double-click `forge-1.14.4-28.2.0-installer.jar` and use the UI to install both.
+* That means double-click `forge-1.16.3-34.1.0-installer.jar` and use the UI to install both.
 
 **Get the mod**
 
-* Download to a folder like:
-```C:\Minecraft\forge-1.14.4-28.2.0-mdk```
+* Download and extract to a folder like:
+```C:\Minecraft\forge-1.16.3-34.1.0-mdk```
 
 * Make sure the path isn't too long to avoid compile errors.
 
