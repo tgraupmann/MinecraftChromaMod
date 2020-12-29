@@ -40,7 +40,7 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 * Visit the [Releases Section](https://github.com/tgraupmann/MinecraftChromaMod/releases) to run the installers.
 
-* Minecraft Forge Universal Installer for client and server
+* Use the Minecraft Forge Universal Installer for client and server
 
 * Use the mod installer that matches the Minecraft Forge version
 
