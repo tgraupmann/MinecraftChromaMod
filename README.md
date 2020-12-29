@@ -10,9 +10,11 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 ## Table of Contents
 
 * [See Also](#see-also)
+* [Quick Start](#quick-start)
 * [Chroma Effects](#chroma-effects)
 * [Videos](#videos)
-* [Quick Setup](#quick-setup)
+* [Setup and Build](#setup-and-build)
+
 
 ## See Also
 
@@ -20,25 +22,27 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 - [Chroma Animation Guide](http://chroma.razer.com/ChromaGuide/) - Visual examples of the Chroma Animation API methods
 
-**Apps:**
+**Mods:**
 
-- [ChromaClientForDiscord](https://github.com/tgraupmann/ChromaDiscordApp) - Add Chroma lighting to the Discord App events
+- [MinecraftChromaMod](https://github.com/tgraupmann/MinecraftChromaMod) - Minecraft Chroma RGB Mod
 
-- [ChromaClientForTwitch](https://github.com/tgraupmann/ChromaTwitchExtension) - Add Chroma lighting to the Twitch streaming experience
+- [RobloxSampleChromaMod](https://github.com/tgraupmann/RobloxSampleChromaMod) - Roblox Sample Chroma RGB Mod
 
-**Plugins:**
+- [Cpp_RustChromaModClient](https://github.com/tgraupmann/Cpp_RustChromaModClient) - Rust Chroma RGB Mod Client
 
-- [CChromaEditor](https://github.com/RazerOfficial/CChromaEditor) - C++ native MFC library for playing and editing Chroma animations
 
-- [GameMakerChromaExtension](https://github.com/RazerOfficial/GameMakerChromaExtension) - GameMaker extension to control lighting for Razer Chroma
+**Editors:**
 
-- [Godot_ChromaSDK](https://github.com/RazerOfficial/Godot_ChromaSDK) - Godot native library for playing Chroma animations
+- [Web Chroma Editor](https://chroma.razer.com/ChromaEditor/) - Create Chroma RGB Animations
 
-- [HTML5ChromaSDK](https://github.com/RazerOfficial/HTML5ChromaSDK) - JavaScript library for playing Chroma animations
 
-- [UE4_XDK_SampleApp](https://github.com/razerofficial/UE4_XDK_SampleApp) - UE4 Chroma samples and runtime module with Blueprint library for the ChromaSDK
+## Quick Start ##
 
-- [UnityNativeChromaSDK](https://github.com/RazerOfficial/UnityNativeChromaSDK) - Unity native library for the ChromaSDK
+* Visit the [Releases Section](https://github.com/tgraupmann/MinecraftChromaMod/releases) run the installers for:
+
+* Minecraft Forge Universal Installer for client and server
+
+* Use the mod installer that matches the Minecraft Forge version
 
 
 ## Chroma Effects ##
@@ -98,7 +102,7 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 <a target="_blank" href="https://youtu.be/kFtd75cmfeo"><img src="https://img.youtube.com/vi/kFtd75cmfeo/0.jpg"></a>
 
 
-## Quick Setup
+## Setup and Build ###
 
 * Install [JDK 1.8 or better](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
