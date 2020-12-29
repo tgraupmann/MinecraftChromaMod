@@ -104,6 +104,8 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 ## Setup and Build ###
 
+This section is only needed to build a new mod installer or to make changes to the mod.
+
 * Install [JDK 1.8 or better](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 * You can also use [OpenJDK](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=hotspot). Use `OpenJDK 8 (LTS)`
