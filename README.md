@@ -38,7 +38,7 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 ## Quick Start ##
 
-* Visit the [Releases Section](https://github.com/tgraupmann/MinecraftChromaMod/releases) run the installers for:
+* Visit the [Releases Section](https://github.com/tgraupmann/MinecraftChromaMod/releases) to run the installers.
 
 * Minecraft Forge Universal Installer for client and server
 
