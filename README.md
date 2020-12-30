@@ -112,7 +112,9 @@ This section is only needed to build a new mod installer or to make changes to t
 
 * Set the `JAVA_HOME` environment variable to the path of the 64-bit version of the JDK. Gradle will report out of memory with the 32-bit JDK version which can be fixed in the `gradle.properties` file if you have to.
 
-* Install the latest MinecraftForge `server` and `client` using the [Windows Installer for 1.16.3](https://files.minecraftforge.net/maven/net/minecraftforge/forge/1.16.3-34.1.0/forge-1.16.3-34.1.0-installer.jar)
+* Install the [Eclipse IDE](https://www.eclipse.org/eclipseide/)
+
+* Install the latest MinecraftForge `server` and `client` using the [Windows Installer](http://files.minecraftforge.net/)
 
 **Above: Install the Server and Client**
 
