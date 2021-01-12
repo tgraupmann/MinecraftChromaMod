@@ -1018,9 +1018,9 @@ public class JChromaSDK {
 	Direct access to low level API.
 	*/
 	/// EXPORT_API RZRESULT PluginCoreInitSDK(ChromaSDK::APPINFOTYPE* AppInfo);
-	public int coreInitSDK(Pointer AppInfo)
+	public int coreInitSDK(JAppInfoType appInfo)
 	{
-		return wrapper.PluginCoreInitSDK(AppInfo);
+		return wrapper.PluginCoreInitSDK(appInfo);
 	}
 	/*
 	Direct access to low level API.
@@ -2257,9 +2257,9 @@ public class JChromaSDK {
 	the ChromaSDK if not already initialized.
 	*/
 	/// EXPORT_API RZRESULT PluginInitSDK(ChromaSDK::APPINFOTYPE* AppInfo);
-	public int initSDK(Pointer AppInfo)
+	public int initSDK(JAppInfoType appInfo)
 	{
-		return wrapper.PluginInitSDK(AppInfo);
+		return wrapper.PluginInitSDK(appInfo);
 	}
 	/*
 	Insert an animation delay by duplicating the frame by the delay number of 

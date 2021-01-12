@@ -659,7 +659,7 @@ interface JChromaLib extends Library {
 	Direct access to low level API.
 	*/
 	/// EXPORT_API RZRESULT PluginCoreInitSDK(ChromaSDK::APPINFOTYPE* AppInfo);
-	int PluginCoreInitSDK(Pointer AppInfo);
+	int PluginCoreInitSDK(JAppInfoType appInfo);
 	/*
 	Direct access to low level API.
 	*/
@@ -1481,7 +1481,7 @@ interface JChromaLib extends Library {
 	the ChromaSDK if not already initialized.
 	*/
 	/// EXPORT_API RZRESULT PluginInitSDK(ChromaSDK::APPINFOTYPE* AppInfo);
-	int PluginInitSDK(Pointer AppInfo);
+	int PluginInitSDK(JAppInfoType AppInfo);
 	/*
 	Insert an animation delay by duplicating the frame by the delay number of 
 	times. Animation is referenced by id.

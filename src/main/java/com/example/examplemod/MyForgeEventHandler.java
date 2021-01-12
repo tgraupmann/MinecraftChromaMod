@@ -110,10 +110,6 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	private void init() {
 		
-		for (int i = 0; i < 10; ++i) {
-			logMessage("*****MyForgeEventHandler*****");
-		}
-
 		sChromaAnimationAPI = JChromaSDK.getInstance();
 		ChromaEffects.sChromaAnimationAPI = sChromaAnimationAPI;
 
@@ -136,8 +132,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 	    appInfo.supportedDevice = (0x01 | 0x02 | 0x04 | 0x08 | 0x10 | 0x20);
 	    appInfo.category = 2;
 	    logMessage("*****Initializing Chroma...");
-	    int result = sChromaAnimationAPI.init();
-		//int result = sChromaAnimationAPI.initSDK(appInfo.getPointer());
+		int result = sChromaAnimationAPI.initSDK(appInfo);
 		if (result == 0) {
 			mChromaInitialized = true;
 			logMessage("*****Initialized ChromaSDK!");
