@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.razer.java.JAppInfoType;
 import com.razer.java.JChromaSDK;
 
 import net.minecraft.block.Block;
@@ -108,15 +109,40 @@ public class MyForgeEventHandler extends ChromaEffects {
 	}
 
 	private void init() {
+		
+		for (int i = 0; i < 10; ++i) {
+			logMessage("*****MyForgeEventHandler*****");
+		}
 
 		sChromaAnimationAPI = JChromaSDK.getInstance();
 		ChromaEffects.sChromaAnimationAPI = sChromaAnimationAPI;
-		int result = sChromaAnimationAPI.init();
+
+		logMessage("*****Constructing AppInfo...");
+		JAppInfoType appInfo = new JAppInfoType();
+
+	    appInfo.setTitle("Minecraft Chroma Mod");
+	    appInfo.setDescription("A sample application using Razer Chroma SDK");
+	    appInfo.setAuthorName("Tim Graupmann");
+	    appInfo.setAuthorContact("https://github.com/tgraupmann/MinecraftChromaMod");
+
+	    //appInfo.SupportedDevice = 
+	    //    0x01 | // Keyboards
+	    //    0x02 | // Mice
+	    //    0x04 | // Headset
+	    //    0x08 | // Mousepads
+	    //    0x10 | // Keypads
+	    //    0x20   // ChromaLink devices
+	    //    ;
+	    appInfo.supportedDevice = (0x01 | 0x02 | 0x04 | 0x08 | 0x10 | 0x20);
+	    appInfo.category = 2;
+	    logMessage("*****Initializing Chroma...");
+	    int result = sChromaAnimationAPI.init();
+		//int result = sChromaAnimationAPI.initSDK(appInfo.getPointer());
 		if (result == 0) {
 			mChromaInitialized = true;
 			logMessage("*****Initialized ChromaSDK!");
 		} else {
-			logError("******* Failed to initialize ChromaSDK!");
+			logError("******* Failed to initialize ChromaSDK! error="+result);
 			mChromaInitialized = false;
 		}
 

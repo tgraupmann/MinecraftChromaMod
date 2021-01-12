@@ -44,12 +44,13 @@ public class ExampleMod
 
     private void setup(final FMLCommonSetupEvent event)
     {
-        // some preinit code
-        LOGGER.info("HELLO FROM PREINIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
-        
+        LOGGER.info("ExampleMod: setup() loading MyForgeEventHandler");
         sMyForgeEventHandler = new MyForgeEventHandler();
+        
+        LOGGER.info("ExampleMod: setup() registering MyForgeEventHandler");
 		sMyForgeEventHandler.register();
+		
+		LOGGER.info("ExampleMod: setup() complete");
     }
 
     private void doClientStuff(final FMLClientSetupEvent event) {
