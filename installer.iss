@@ -1,6 +1,6 @@
 [Setup]
 AppName=Chroma Minecraft Mod
-AppVerName=Chroma Minecraft Mod 1.0
+AppVerName=Chroma Minecraft Mod 1.1
 AppPublisher=Razer US Ltd.
 AppPublisherURL=https://razer.com
 AppSupportURL=https://support.razer.com
