@@ -110,55 +110,58 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	private void init() {
 		
-		sChromaAnimationAPI = JChromaSDK.getInstance();
-		ChromaEffects.sChromaAnimationAPI = sChromaAnimationAPI;
-
-		logMessage("*****Constructing AppInfo...");
-		JAppInfoType appInfo = new JAppInfoType();
-
-	    appInfo.setTitle("Minecraft Chroma Mod");
-	    appInfo.setDescription("A sample application using Razer Chroma SDK");
-	    appInfo.setAuthorName("Tim Graupmann");
-	    appInfo.setAuthorContact("https://github.com/tgraupmann/MinecraftChromaMod");
-
-	    //appInfo.SupportedDevice = 
-	    //    0x01 | // Keyboards
-	    //    0x02 | // Mice
-	    //    0x04 | // Headset
-	    //    0x08 | // Mousepads
-	    //    0x10 | // Keypads
-	    //    0x20   // ChromaLink devices
-	    //    ;
-	    appInfo.supportedDevice = (0x01 | 0x02 | 0x04 | 0x08 | 0x10 | 0x20);
-	    appInfo.category = 2;
-	    logMessage("*****Initializing Chroma...");
-		int result = sChromaAnimationAPI.initSDK(appInfo);
-		if (result == 0) {
-			mChromaInitialized = true;
-			logMessage("*****Initialized ChromaSDK!");
-		} else {
-			logError("******* Failed to initialize ChromaSDK! error="+result);
-			mChromaInitialized = false;
-		}
-
-		// Keep Chroma in the same thread to avoid multiple threads manipulating the same animations
-		setupChromaThread();
-
-		//avoid blocking the main thread
-		TimerTask task = new TimerTask() {
-			public void run() {
-				if (mChromaInitialized) {
-					setupBaseAnimation("ChromaLink");
-					setupBaseAnimation("Headset");
-					setupBaseAnimation("Keyboard");
-					setupBaseAnimation("Keypad");
-					setupBaseAnimation("Mouse");
-					setupBaseAnimation("Mousepad");
-					sChromaAnimationAPI.useIdleAnimations(true);
-				}
+		if (sChromaAnimationAPI == null) {
+		
+			sChromaAnimationAPI = JChromaSDK.getInstance();
+			ChromaEffects.sChromaAnimationAPI = sChromaAnimationAPI;
+	
+			logMessage("*****Constructing AppInfo...");
+			JAppInfoType appInfo = new JAppInfoType();
+	
+		    appInfo.setTitle("Minecraft Chroma Mod");
+		    appInfo.setDescription("A sample application using Razer Chroma SDK");
+		    appInfo.setAuthorName("Tim Graupmann");
+		    appInfo.setAuthorContact("https://github.com/tgraupmann/MinecraftChromaMod");
+	
+		    //appInfo.SupportedDevice = 
+		    //    0x01 | // Keyboards
+		    //    0x02 | // Mice
+		    //    0x04 | // Headset
+		    //    0x08 | // Mousepads
+		    //    0x10 | // Keypads
+		    //    0x20   // ChromaLink devices
+		    //    ;
+		    appInfo.supportedDevice = (0x01 | 0x02 | 0x04 | 0x08 | 0x10 | 0x20);
+		    appInfo.category = 2;
+		    logMessage("*****Initializing Chroma...");
+			int result = sChromaAnimationAPI.initSDK(appInfo);
+			if (result == 0) {
+				mChromaInitialized = true;
+				logMessage("*****Initialized ChromaSDK!");
+			} else {
+				logError("******* Failed to initialize ChromaSDK! error="+result);
+				mChromaInitialized = false;
 			}
-		};
-		addChromaTask(task);
+	
+			// Keep Chroma in the same thread to avoid multiple threads manipulating the same animations
+			setupChromaThread();
+	
+			//avoid blocking the main thread
+			TimerTask task = new TimerTask() {
+				public void run() {
+					if (mChromaInitialized) {
+						setupBaseAnimation("ChromaLink");
+						setupBaseAnimation("Headset");
+						setupBaseAnimation("Keyboard");
+						setupBaseAnimation("Keypad");
+						setupBaseAnimation("Mouse");
+						setupBaseAnimation("Mousepad");
+						sChromaAnimationAPI.useIdleAnimations(true);
+					}
+				}
+			};
+			addChromaTask(task);
+		}
 	}
 
 	private void uninit() {
@@ -172,6 +175,9 @@ public class MyForgeEventHandler extends ChromaEffects {
 					sChromaAnimationAPI.uninit();
 					mChromaInitialized = false;
 				}
+				
+				ChromaEffects.sChromaAnimationAPI = null;
+				sChromaAnimationAPI = null;
 			}
 		};
 		timer.schedule(task, 100);
@@ -242,6 +248,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 	
 	@SubscribeEvent
 	public void handleMainMenu(GuiScreenEvent.InitGuiEvent event) {
+		init();
 		if (mChromaInitialized) {
 			Screen gui = event.getGui();
 			if (null != gui) {
@@ -262,6 +269,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 	
 	@SubscribeEvent
 	public void handleScreenEvent(RenderGameOverlayEvent event) {
+		init();
 		if (mChromaInitialized && _mWasPaused && null != _mMinecraft && !(_mMinecraft.currentScreen instanceof IngameMenuScreen)) {
 			//logMessage("Main Menu Closed");						
 	        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_ChromaLink.chroma");
@@ -277,6 +285,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	public void handlePlaceBlock(BlockEvent.EntityPlaceEvent event) {
+		init();
 		// doesn't fire on client
 		/*
 		String threadName = Thread.currentThread().getName();
@@ -307,6 +316,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	public void handleCraftItem(PlayerEvent.ItemCraftedEvent event) {
+		init();
 		String threadName = Thread.currentThread().getName();
 		switch (threadName) {
 			case "Server thread":
@@ -334,6 +344,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	public void handlePlayerDamage(LivingDamageEvent event) {
+		init();
 		// doesn't fire on client
 		/*
 		String threadName = Thread.currentThread().getName();
@@ -366,6 +377,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	public void handleArrowLooseEvent(ArrowLooseEvent event) {
+		init();
 		String threadName = Thread.currentThread().getName();
 		switch (threadName) {
 		case "Server thread":
@@ -392,6 +404,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	public void handleLivingDeathEvent(LivingDeathEvent event) {
+		init();
 		// Doesn't fire on client
 		/*
 		String threadName = Thread.currentThread().getName();
@@ -456,6 +469,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	public void handlePlayerContainerEvent(PlayerContainerEvent event) {
+		init();
 		/*
 		// event only seems to run on the server
 		String threadName = Thread.currentThread().getName();
@@ -574,6 +588,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	public void handleLeftClickEmpty(PlayerInteractEvent.LeftClickEmpty event) {
+		init();
 		String threadName = Thread.currentThread().getName();
 		switch (threadName) {
 			case "Server thread":
@@ -593,6 +608,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	public void handleLeftClickBlock(PlayerInteractEvent.LeftClickBlock event) {
+		init();
 		String threadName = Thread.currentThread().getName();
 		switch (threadName) {
 			case "Server thread":
@@ -612,6 +628,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	public void handleRightClickEmpty(PlayerInteractEvent.RightClickEmpty event) {
+		init();
 
 		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.PUFFERFISH_SPAWN_EGG) {
 			logMessage("Spawn puffer fish");
@@ -676,6 +693,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	public void handleRightClickBlock(RightClickBlock event) {
+		init();
 
 		String threadName = Thread.currentThread().getName();
 		switch (threadName) {
@@ -782,6 +800,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	void handleWorldTickEvent(TickEvent.WorldTickEvent event) {
+		init();
 
 		boolean isRaining = false;
 		boolean isSnowing = false;
@@ -856,6 +875,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 	@SubscribeEvent
 	void handlePlayerTickEvent(PlayerTickEvent event) {
+		init();
 
 		String threadName = Thread.currentThread().getName();
 		switch (threadName) {
