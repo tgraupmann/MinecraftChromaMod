@@ -87,17 +87,21 @@ public class MyForgeEventHandler extends ChromaEffects {
 		Timer timer = new Timer("Timer");
 		TimerTask task = new TimerTask() {
 			public void run() {
-				while (mWaitForExit) {
-					if (sChromaTasks.size() > 0) {
-						TimerTask nextTask = sChromaTasks.get(0);
-						sChromaTasks.remove(0);
-						nextTask.run();
+				try {
+					while (mWaitForExit) {
+						if (sChromaTasks.size() > 0) {
+							TimerTask nextTask = sChromaTasks.get(0);
+							sChromaTasks.remove(0);
+							nextTask.run();
+						}
+						try {
+							Thread.sleep(0);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
 					}
-					try {
-						Thread.sleep(0);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -149,14 +153,18 @@ public class MyForgeEventHandler extends ChromaEffects {
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
 				public void run() {
-					if (mChromaInitialized) {
-						setupBaseAnimation("ChromaLink");
-						setupBaseAnimation("Headset");
-						setupBaseAnimation("Keyboard");
-						setupBaseAnimation("Keypad");
-						setupBaseAnimation("Mouse");
-						setupBaseAnimation("Mousepad");
-						sChromaAnimationAPI.useIdleAnimations(true);
+					try {
+						if (mChromaInitialized) {
+							setupBaseAnimation("ChromaLink");
+							setupBaseAnimation("Headset");
+							setupBaseAnimation("Keyboard");
+							setupBaseAnimation("Keypad");
+							setupBaseAnimation("Mouse");
+							setupBaseAnimation("Mousepad");
+							sChromaAnimationAPI.useIdleAnimations(true);
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			};
@@ -169,15 +177,19 @@ public class MyForgeEventHandler extends ChromaEffects {
 		Timer timer = new Timer("Timer");
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					sChromaAnimationAPI.stopAll();
-					sChromaAnimationAPI.closeAll();
-					sChromaAnimationAPI.uninit();
-					mChromaInitialized = false;
+				try {
+					if (mChromaInitialized) {
+						sChromaAnimationAPI.stopAll();
+						sChromaAnimationAPI.closeAll();
+						sChromaAnimationAPI.uninit();
+						mChromaInitialized = false;
+					}
+					
+					ChromaEffects.sChromaAnimationAPI = null;
+					sChromaAnimationAPI = null;
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-				
-				ChromaEffects.sChromaAnimationAPI = null;
-				sChromaAnimationAPI = null;
 			}
 		};
 		timer.schedule(task, 100);
@@ -187,10 +199,14 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					String path = getAnimationPath() + name;
-					sChromaAnimationAPI.closeAnimationName(path);
-					sChromaAnimationAPI.playAnimationName(path, loop);
+				try {
+					if (mChromaInitialized) {
+						String path = getAnimationPath() + name;
+						sChromaAnimationAPI.closeAnimationName(path);
+						sChromaAnimationAPI.playAnimationName(path, loop);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -200,11 +216,15 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					String path = getAnimationPath() + name;
-					sChromaAnimationAPI.closeAnimationName(path);
-					sChromaAnimationAPI.reverseAllFramesName(path);
-					sChromaAnimationAPI.playAnimationName(path, loop);
+				try {
+					if (mChromaInitialized) {
+						String path = getAnimationPath() + name;
+						sChromaAnimationAPI.closeAnimationName(path);
+						sChromaAnimationAPI.reverseAllFramesName(path);
+						sChromaAnimationAPI.playAnimationName(path, loop);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -215,16 +235,20 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					int ground = sChromaAnimationAPI.getRGB(64, 32, 0);
-
-					String baseLayer = getAnimationPath() + "Blank_" + device + ".chroma";
-					sChromaAnimationAPI.closeAnimationName(baseLayer);
-					sChromaAnimationAPI.fillZeroColorAllFramesName(baseLayer, ground);
-
-					String idleAnimation = "Idle_" + device + ".chroma";
-					sChromaAnimationAPI.copyAnimationName(baseLayer, idleAnimation);
-					sChromaAnimationAPI.setIdleAnimationName(idleAnimation);
+				try {
+					if (mChromaInitialized) {
+						int ground = sChromaAnimationAPI.getRGB(64, 32, 0);
+	
+						String baseLayer = getAnimationPath() + "Blank_" + device + ".chroma";
+						sChromaAnimationAPI.closeAnimationName(baseLayer);
+						sChromaAnimationAPI.fillZeroColorAllFramesName(baseLayer, ground);
+	
+						String idleAnimation = "Idle_" + device + ".chroma";
+						sChromaAnimationAPI.copyAnimationName(baseLayer, idleAnimation);
+						sChromaAnimationAPI.setIdleAnimationName(idleAnimation);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -300,13 +324,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					showEffect4();
-					showEffect4ChromaLink();
-					showEffect4Headset();
-					showEffect4Mousepad();
-					showEffect4Mouse();
-					showEffect4Keypad();
+				try {
+					if (mChromaInitialized) {
+						showEffect4();
+						showEffect4ChromaLink();
+						showEffect4Headset();
+						showEffect4Mousepad();
+						showEffect4Mouse();
+						showEffect4Keypad();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -328,13 +356,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					showEffect7();
-					showEffect7ChromaLink();
-					showEffect7Headset();
-					showEffect7Mousepad();
-					showEffect7Mouse();
-          showEffect7Keypad();
+				try {
+					if (mChromaInitialized) {
+						showEffect7();
+						showEffect7ChromaLink();
+						showEffect7Headset();
+						showEffect7Mousepad();
+						showEffect7Mouse();
+						showEffect7Keypad();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -358,16 +390,20 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (event.getSource().getTrueSource() instanceof CreeperEntity) {
-					logMessage("Damaged by creeper");
-					if (mChromaInitialized) {
-						showEffect10();
-						showEffect10ChromaLink();
-						showEffect10Headset();
-						showEffect10Mousepad();
-						showEffect10Mouse();
-            showEffect10Keypad();
+				try {				
+					if (event.getSource().getTrueSource() instanceof CreeperEntity) {
+						logMessage("Damaged by creeper");
+						if (mChromaInitialized) {
+							showEffect10();
+							showEffect10ChromaLink();
+							showEffect10Headset();
+							showEffect10Mousepad();
+							showEffect10Mouse();
+							showEffect10Keypad();
+						}
 					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -389,13 +425,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					showEffect5();
-					showEffect5ChromaLink();
-					showEffect5Headset();
-					showEffect5Mousepad();
-					showEffect5Mouse();
-          showEffect5Keypad();
+				try {
+					if (mChromaInitialized) {
+						showEffect5();
+						showEffect5ChromaLink();
+						showEffect5Headset();
+						showEffect5Mousepad();
+						showEffect5Mouse();
+						showEffect5Keypad();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -420,30 +460,34 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (event.getEntityLiving() instanceof PigEntity) {
-					if (event.getSource().getTrueSource() instanceof PlayerEntity) {
-						logMessage("Player killed pig");
-						if (mChromaInitialized) {
-							showEffect12();
-							showEffect12ChromaLink();
-							showEffect12Headset();
-							showEffect12Mousepad();
-							showEffect12Mouse();
-              showEffect12Keypad();
+				try {
+					if (event.getEntityLiving() instanceof PigEntity) {
+						if (event.getSource().getTrueSource() instanceof PlayerEntity) {
+							logMessage("Player killed pig");
+							if (mChromaInitialized) {
+								showEffect12();
+								showEffect12ChromaLink();
+								showEffect12Headset();
+								showEffect12Mousepad();
+								showEffect12Mouse();
+								showEffect12Keypad();
+							}
+						}
+					} else if (event.getEntityLiving() instanceof ChickenEntity) {
+						if (event.getSource().getTrueSource() instanceof PlayerEntity) {
+							logMessage("Player killed chicken");
+							if (mChromaInitialized) {
+								showEffect15();
+								showEffect15ChromaLink();
+								showEffect15Headset();
+								showEffect15Mousepad();
+								showEffect15Mouse();
+								showEffect15Keypad();
+							}
 						}
 					}
-				} else if (event.getEntityLiving() instanceof ChickenEntity) {
-					if (event.getSource().getTrueSource() instanceof PlayerEntity) {
-						logMessage("Player killed chicken");
-						if (mChromaInitialized) {
-							showEffect15();
-							showEffect15ChromaLink();
-							showEffect15Headset();
-							showEffect15Mousepad();
-							showEffect15Mouse();
-              showEffect15Keypad();
-						}
-					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -454,13 +498,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					showEffect13();
-					showEffect13ChromaLink();
-					showEffect13Headset();
-					showEffect13Mousepad();
-					showEffect13Mouse();
-          showEffect13Keypad();
+				try {
+					if (mChromaInitialized) {
+						showEffect13();
+						showEffect13ChromaLink();
+						showEffect13Headset();
+						showEffect13Mousepad();
+						showEffect13Mouse();
+						showEffect13Keypad();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -496,33 +544,37 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
-					String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
-					sChromaAnimationAPI.closeAnimationName(baseLayer);
-					sChromaAnimationAPI.closeAnimationName(layer2);
-
-					int frameCount = sChromaAnimationAPI.getFrameCountName(layer2);
-					sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
-
-					sChromaAnimationAPI.copyNonZeroAllKeysAllFramesName(layer2, baseLayer);
-
-					sChromaAnimationAPI.reverseAllFramesName(layer2);
-					sChromaAnimationAPI.addNonZeroAllKeysAllFramesName(layer2, baseLayer);
-
-					sChromaAnimationAPI.trimEndFramesName(baseLayer, 9);
-					sChromaAnimationAPI.insertDelayName(baseLayer, 8, 10);
-					sChromaAnimationAPI.fadeEndFramesName(baseLayer, 5);
-
-					int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
-					int color2 = sChromaAnimationAPI.getRGB(170, 102, 15);
-					sChromaAnimationAPI.multiplyNonZeroTargetColorLerpAllFramesName(baseLayer, color1, color2);
-
-					sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 0, 48, 0);
-
-					sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-
-					sChromaAnimationAPI.playAnimationName(baseLayer, false);
+				try {
+					if (mChromaInitialized) {
+						String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
+						String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
+						sChromaAnimationAPI.closeAnimationName(baseLayer);
+						sChromaAnimationAPI.closeAnimationName(layer2);
+	
+						int frameCount = sChromaAnimationAPI.getFrameCountName(layer2);
+						sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
+	
+						sChromaAnimationAPI.copyNonZeroAllKeysAllFramesName(layer2, baseLayer);
+	
+						sChromaAnimationAPI.reverseAllFramesName(layer2);
+						sChromaAnimationAPI.addNonZeroAllKeysAllFramesName(layer2, baseLayer);
+	
+						sChromaAnimationAPI.trimEndFramesName(baseLayer, 9);
+						sChromaAnimationAPI.insertDelayName(baseLayer, 8, 10);
+						sChromaAnimationAPI.fadeEndFramesName(baseLayer, 5);
+	
+						int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
+						int color2 = sChromaAnimationAPI.getRGB(170, 102, 15);
+						sChromaAnimationAPI.multiplyNonZeroTargetColorLerpAllFramesName(baseLayer, color1, color2);
+	
+						sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 0, 48, 0);
+	
+						sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+	
+						sChromaAnimationAPI.playAnimationName(baseLayer, false);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -533,35 +585,39 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
-					String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
-					sChromaAnimationAPI.closeAnimationName(baseLayer);
-					sChromaAnimationAPI.closeAnimationName(layer2);
-
-					int frameCount = sChromaAnimationAPI.getFrameCountName(layer2);
-					sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
-
-					sChromaAnimationAPI.copyNonZeroAllKeysAllFramesName(layer2, baseLayer);
-
-					sChromaAnimationAPI.reverseAllFramesName(layer2);
-					sChromaAnimationAPI.addNonZeroAllKeysAllFramesName(layer2, baseLayer);
-
-					sChromaAnimationAPI.trimEndFramesName(baseLayer, 9);
-					sChromaAnimationAPI.insertDelayName(baseLayer, 8, 10);
-					sChromaAnimationAPI.fadeEndFramesName(baseLayer, 5);
-
-					int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
-					int color2 = sChromaAnimationAPI.getRGB(170, 102, 15);
-					sChromaAnimationAPI.multiplyNonZeroTargetColorLerpAllFramesName(baseLayer, color1, color2);
-
-					sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 0, 48, 0);
-
-					sChromaAnimationAPI.reverseAllFramesName(baseLayer);
-
-					sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
-
-					sChromaAnimationAPI.playAnimationName(baseLayer, false);
+				try {
+					if (mChromaInitialized) {
+						String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
+						String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
+						sChromaAnimationAPI.closeAnimationName(baseLayer);
+						sChromaAnimationAPI.closeAnimationName(layer2);
+	
+						int frameCount = sChromaAnimationAPI.getFrameCountName(layer2);
+						sChromaAnimationAPI.makeBlankFramesName(baseLayer, frameCount, 0.1f, 0);
+	
+						sChromaAnimationAPI.copyNonZeroAllKeysAllFramesName(layer2, baseLayer);
+	
+						sChromaAnimationAPI.reverseAllFramesName(layer2);
+						sChromaAnimationAPI.addNonZeroAllKeysAllFramesName(layer2, baseLayer);
+	
+						sChromaAnimationAPI.trimEndFramesName(baseLayer, 9);
+						sChromaAnimationAPI.insertDelayName(baseLayer, 8, 10);
+						sChromaAnimationAPI.fadeEndFramesName(baseLayer, 5);
+	
+						int color1 = sChromaAnimationAPI.getRGB(60, 40, 20);
+						int color2 = sChromaAnimationAPI.getRGB(170, 102, 15);
+						sChromaAnimationAPI.multiplyNonZeroTargetColorLerpAllFramesName(baseLayer, color1, color2);
+	
+						sChromaAnimationAPI.fillZeroColorAllFramesRGBName(baseLayer, 0, 48, 0);
+	
+						sChromaAnimationAPI.reverseAllFramesName(baseLayer);
+	
+						sChromaAnimationAPI.overrideFrameDurationName(baseLayer, 0.033f);
+	
+						sChromaAnimationAPI.playAnimationName(baseLayer, false);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -572,13 +628,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					showEffect3();
-					showEffect3ChromaLink();
-					showEffect3Headset();
-					showEffect3Mousepad();
-					showEffect3Mouse();
-          showEffect3Keypad();
+				try {
+					if (mChromaInitialized) {
+						showEffect3();
+						showEffect3ChromaLink();
+						showEffect3Headset();
+						showEffect3Mousepad();
+						showEffect3Mouse();
+						showEffect3Keypad();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -635,13 +695,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
 				public void run() {
-					if (mChromaInitialized) {
-						showEffect17();
-						showEffect17ChromaLink();
-						showEffect17Headset();
-						showEffect17Mousepad();
-						showEffect17Mouse();
-            showEffect17Keypad();
+					try {					
+						if (mChromaInitialized) {
+							showEffect17();
+							showEffect17ChromaLink();
+							showEffect17Headset();
+							showEffect17Mousepad();
+							showEffect17Mouse();
+							showEffect17Keypad();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			};
@@ -654,13 +718,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
 				public void run() {
-					if (mChromaInitialized) {
-						showEffect18();
-						showEffect18ChromaLink();
-						showEffect18Headset();
-						showEffect18Mousepad();
-						showEffect18Mouse();
-            showEffect18Keypad();
+					try {
+						if (mChromaInitialized) {
+							showEffect18();
+							showEffect18ChromaLink();
+							showEffect18Headset();
+							showEffect18Mousepad();
+							showEffect18Mouse();
+							showEffect18Keypad();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			};
@@ -675,13 +743,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
 				public void run() {
-					if (mChromaInitialized) {
-						showEffect14();
-						showEffect14ChromaLink();
-						showEffect14Headset();
-						showEffect14Mousepad();
-						showEffect14Mouse();
-            showEffect14Keypad();
+					try {
+						if (mChromaInitialized) {
+							showEffect14();
+							showEffect14ChromaLink();
+							showEffect14Headset();
+							showEffect14Mousepad();
+							showEffect14Mouse();
+							showEffect14Keypad();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			};
@@ -707,13 +779,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
 				public void run() {
-					if (mChromaInitialized) {
-						showEffect17();
-						showEffect17ChromaLink();
-						showEffect17Headset();
-						showEffect17Mousepad();
-						showEffect17Mouse();
-            showEffect17Keypad();
+					try {
+						if (mChromaInitialized) {
+							showEffect17();
+							showEffect17ChromaLink();
+							showEffect17Headset();
+							showEffect17Mousepad();
+							showEffect17Mouse();
+							showEffect17Keypad();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			};
@@ -726,13 +802,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
 				public void run() {
-					if (mChromaInitialized) {
-						showEffect18();
-						showEffect18ChromaLink();
-						showEffect18Headset();
-						showEffect18Mousepad();
-						showEffect18Mouse();
-            showEffect18Keypad();
+					try {
+						if (mChromaInitialized) {
+							showEffect18();
+							showEffect18ChromaLink();
+							showEffect18Headset();
+							showEffect18Mousepad();
+							showEffect18Mouse();
+							showEffect18Keypad();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			};
@@ -747,13 +827,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
 				public void run() {
-					if (mChromaInitialized) {
-						showEffect14();
-						showEffect14ChromaLink();
-						showEffect14Headset();
-						showEffect14Mousepad();
-						showEffect14Mouse();
-            showEffect14Keypad();
+					try {
+						if (mChromaInitialized) {
+							showEffect14();
+							showEffect14ChromaLink();
+							showEffect14Headset();
+							showEffect14Mousepad();
+							showEffect14Mouse();
+							showEffect14Keypad();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			};
@@ -767,32 +851,36 @@ public class MyForgeEventHandler extends ChromaEffects {
 		final World world = event.getWorld();
 		TimerTask task = new TimerTask() {
 			public void run() {
-				BlockState blockState = world.getBlockState(pos);
-				if (null != blockState) {
-					StateHolder stateHolder = (StateHolder)blockState;
-					Block block = blockState.getBlock();
-					if (block == Blocks.ACACIA_DOOR || block == Blocks.BIRCH_DOOR || block == Blocks.DARK_OAK_DOOR
-							|| block == Blocks.IRON_DOOR || block == Blocks.JUNGLE_DOOR || block == Blocks.SPRUCE_DOOR
-							|| block == Blocks.OAK_DOOR) {
-							if ((boolean) stateHolder.get(BlockStateProperties.OPEN)) {
-								logMessage("Door is open");
-								playAnimationName("OpenDoor_ChromaLink.chroma", false);
-								playAnimationName("OpenDoor_Headset.chroma", false);
-								playAnimationName("OpenDoor_Mouse.chroma", false);
-								playAnimationName("OpenDoor_Mousepad.chroma", false);
-								setupDoorOpen();
-							} else {
-								logMessage("Door is closed");
-								playAnimationReverseName("OpenDoor_ChromaLink.chroma", false);
-								playAnimationReverseName("OpenDoor_Headset.chroma", false);
-								playAnimationReverseName("OpenDoor_Mouse.chroma", false);
-								playAnimationReverseName("OpenDoor_Mousepad.chroma", false);
-								setupDoorClose();
+				try {
+					BlockState blockState = world.getBlockState(pos);
+					if (null != blockState) {
+						StateHolder stateHolder = (StateHolder)blockState;
+						Block block = blockState.getBlock();
+						if (block == Blocks.ACACIA_DOOR || block == Blocks.BIRCH_DOOR || block == Blocks.DARK_OAK_DOOR
+								|| block == Blocks.IRON_DOOR || block == Blocks.JUNGLE_DOOR || block == Blocks.SPRUCE_DOOR
+								|| block == Blocks.OAK_DOOR) {
+								if ((boolean) stateHolder.get(BlockStateProperties.OPEN)) {
+									logMessage("Door is open");
+									playAnimationName("OpenDoor_ChromaLink.chroma", false);
+									playAnimationName("OpenDoor_Headset.chroma", false);
+									playAnimationName("OpenDoor_Mouse.chroma", false);
+									playAnimationName("OpenDoor_Mousepad.chroma", false);
+									setupDoorOpen();
+								} else {
+									logMessage("Door is closed");
+									playAnimationReverseName("OpenDoor_ChromaLink.chroma", false);
+									playAnimationReverseName("OpenDoor_Headset.chroma", false);
+									playAnimationReverseName("OpenDoor_Mouse.chroma", false);
+									playAnimationReverseName("OpenDoor_Mousepad.chroma", false);
+									setupDoorClose();
+								}
 							}
+	
 						}
-
-					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
+			}
 		};
 		long delay = 250; //ms
 		timer.schedule(task, delay);
@@ -827,13 +915,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 			logMessage("Player is in the rain");
 			TimerTask task = new TimerTask() {
 				public void run() {
-					if (mChromaInitialized) {
-						showEffect22();
-						showEffect22ChromaLink();
-						showEffect22Headset();
-						showEffect22Mousepad();
-						showEffect22Mouse();
-            showEffect22Keypad();
+					try {
+						if (mChromaInitialized) {
+							showEffect22();
+							showEffect22ChromaLink();
+							showEffect22Headset();
+							showEffect22Mousepad();
+							showEffect22Mouse();
+							showEffect22Keypad();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			};
@@ -852,13 +944,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 			logMessage("Player is in the snow");
 			TimerTask task = new TimerTask() {
 				public void run() {
-					if (mChromaInitialized) {
-						showEffect21();
-						showEffect21ChromaLink();
-						showEffect21Headset();
-						showEffect21Mousepad();
-						showEffect21Mouse();
-            showEffect21Keypad();
+					try {
+						if (mChromaInitialized) {
+							showEffect21();
+							showEffect21ChromaLink();
+							showEffect21Headset();
+							showEffect21Mousepad();
+							showEffect21Mouse();
+							showEffect21Keypad();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			};
@@ -939,13 +1035,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 			logMessage("Player is on ladder");
 			TimerTask task = new TimerTask() {
 				public void run() {
-					if (mChromaInitialized) {
-						showEffect9();
-						showEffect9ChromaLink();
-						showEffect9Headset();
-						showEffect9Mousepad();
-						showEffect9Mouse();
-            showEffect9Keypad();
+					try {
+						if (mChromaInitialized) {
+							showEffect9();
+							showEffect9ChromaLink();
+							showEffect9Headset();
+							showEffect9Mousepad();
+							showEffect9Mouse();
+							showEffect9Keypad();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			};
@@ -962,13 +1062,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 			logMessage("Player is in the minecart");
 			TimerTask task = new TimerTask() {
 				public void run() {
-					if (mChromaInitialized) {
-						showEffect6();
-						showEffect6ChromaLink();
-						showEffect6Headset();
-						showEffect6Mousepad();
-						showEffect6Mouse();
-            showEffect6Keypad();
+					try {
+						if (mChromaInitialized) {
+							showEffect6();
+							showEffect6ChromaLink();
+							showEffect6Headset();
+							showEffect6Mousepad();
+							showEffect6Mouse();
+							showEffect6Keypad();
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			};
@@ -986,13 +1090,17 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					showEffect11();
-					showEffect11ChromaLink();
-					showEffect11Headset();
-					showEffect11Mousepad();
-					showEffect11Mouse();
-          showEffect11Keypad();
+				try {
+					if (mChromaInitialized) {
+						showEffect11();
+						showEffect11ChromaLink();
+						showEffect11Headset();
+						showEffect11Mousepad();
+						showEffect11Mouse();
+						showEffect11Keypad();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
@@ -1003,8 +1111,12 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				if (mChromaInitialized) {
-					sChromaAnimationAPI.stopAll();
+				try {
+					if (mChromaInitialized) {
+						sChromaAnimationAPI.stopAll();
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
 			}
 		};
