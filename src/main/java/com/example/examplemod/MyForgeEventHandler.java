@@ -92,7 +92,15 @@ public class MyForgeEventHandler extends ChromaEffects {
 						if (sChromaTasks.size() > 0) {
 							TimerTask nextTask = sChromaTasks.get(0);
 							sChromaTasks.remove(0);
-							nextTask.run();
+							try {
+								if (nextTask != null) {
+									nextTask.run();
+								}
+							} catch (Exception e) {
+								logError("Exception running Chroma Task!");
+								e.printStackTrace();										
+							}
+							
 						}
 						try {
 							Thread.sleep(0);
