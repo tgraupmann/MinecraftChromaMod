@@ -44,6 +44,26 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 * Use the mod installer that matches the Minecraft Forge version
 
+* To run Minecraft as a dedicated server and use Chroma on the clients, install the [server mod](https://github.com/tgraupmann/MinecraftChromaModServer/releases) on the server.
+
+The client mod with Chroma will be allowed because the `modid` matches on server and client.
+
+* To run a dedicated server, run the following in the `command-prompt`.
+
+```
+CD %appdata%\.minecraft
+java -Xmx4096M -jar forge-1.16.4-35.1.13.jar nogui
+```
+
+* Or put a batch file in your `.minecraft` folder to start the server.
+
+**run_minecraft_server.cmd`
+```
+java -Xmx4096M -jar forge-1.16.4-35.1.13.jar nogui
+```
+
+* The server will not be able to run the client mod. So you'll want to uninstall the client mod on the server and install the server mod on the server.
+
 
 ## Chroma Effects ##
 
