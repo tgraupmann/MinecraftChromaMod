@@ -57,7 +57,7 @@ java -Xmx4096M -jar forge-1.16.4-35.1.13.jar nogui
 
 * Or put a batch file in your `.minecraft` folder to start the server.
 
-**run_minecraft_server.cmd`
+**run_minecraft_server.cmd**
 ```
 java -Xmx4096M -jar forge-1.16.4-35.1.13.jar nogui
 ```
