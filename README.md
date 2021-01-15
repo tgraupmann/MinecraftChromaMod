@@ -110,6 +110,13 @@ java -Xmx4096M -jar forge-1.16.4-35.1.13.jar nogui
 
 ## Videos ##
 
+
+**Setup Video**
+
+<a target="_blank" href="https://youtu.be/v279Tv3RpTM"><img src="https://img.youtube.com/vi/v279Tv3RpTM/0.jpg"></a>
+
+
+
 **Intro Video**
 
 <a target="_blank" href="https://youtu.be/0Y731q8HrPs"><img src="https://img.youtube.com/vi/0Y731q8HrPs/0.jpg"></a>
