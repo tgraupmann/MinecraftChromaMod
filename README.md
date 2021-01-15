@@ -64,6 +64,8 @@ java -Xmx4096M -jar forge-1.16.4-35.1.13.jar nogui
 
 * The server will not be able to run the client mod. So you'll want to uninstall the client mod on the server and install the server mod on the server.
 
+* Connect to Minecraft dedicated servers using port: `25565`.
+
 
 ## Chroma Effects ##
 
