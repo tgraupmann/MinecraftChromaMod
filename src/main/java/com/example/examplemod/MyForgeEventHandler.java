@@ -8,26 +8,23 @@ import java.util.TimerTask;
 import com.razer.java.JAppInfoType;
 import com.razer.java.JChromaSDK;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.Blocks;
+import net.minecraft.client.gui.screens.PauseScreen;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.screen.IngameMenuScreen;
-import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.item.minecart.MinecartEntity;
-import net.minecraft.entity.monster.CreeperEntity;
-import net.minecraft.entity.passive.ChickenEntity;
-import net.minecraft.entity.passive.PigEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.inventory.container.ChestContainer;
-import net.minecraft.item.Items;
-import net.minecraft.state.StateHolder;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
-import net.minecraft.world.biome.Biomes;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.animal.Chicken;
+import net.minecraft.world.entity.animal.Pig;
+import net.minecraft.world.entity.monster.Creeper;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.inventory.ChestMenu;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateHolder;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
@@ -42,8 +39,8 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.event.server.FMLServerStartingEvent;
-import net.minecraftforge.fml.event.server.FMLServerStoppingEvent;
+import net.minecraftforge.fmlserverevents.FMLServerStartingEvent;
+import net.minecraftforge.fmlserverevents.FMLServerStoppingEvent;
 
 public class MyForgeEventHandler extends ChromaEffects {
 
@@ -285,7 +282,8 @@ public class MyForgeEventHandler extends ChromaEffects {
 			Screen gui = event.getGui();
 			if (null != gui) {
 				_mMinecraft = gui.getMinecraft();
-				if (gui instanceof IngameMenuScreen) {
+				//logMessage("handleMainMenu gui="+gui);
+				if (gui instanceof PauseScreen) {
 					//logMessage("Main Menu Open");
 					showEffectMainMenu();
 					showEffectMainMenuChromaLink();
@@ -302,15 +300,18 @@ public class MyForgeEventHandler extends ChromaEffects {
 	@SubscribeEvent
 	public void handleScreenEvent(RenderGameOverlayEvent event) {
 		init();
-		if (mChromaInitialized && _mWasPaused && null != _mMinecraft && !(_mMinecraft.currentScreen instanceof IngameMenuScreen)) {
-			//logMessage("Main Menu Closed");						
-	        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_ChromaLink.chroma");
-	        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Headset.chroma");
-	        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Keyboard.chroma");
-	        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Keypad.chroma");
-	        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Mouse.chroma");
-	        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Mousepad.chroma");
-	        _mWasPaused = false;
+		if (null != _mMinecraft && null != _mMinecraft.screen) {
+			//logMessage("handleScreenEvent screen="+_mMinecraft.screen);
+			if (mChromaInitialized && _mWasPaused && !(_mMinecraft.screen instanceof PauseScreen)) {
+				//logMessage("Main Menu Closed");						
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_ChromaLink.chroma");
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Headset.chroma");
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Keyboard.chroma");
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Keypad.chroma");
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Mouse.chroma");
+		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Mousepad.chroma");
+		        _mWasPaused = false;
+			}
 		}
 	}
 
@@ -398,8 +399,9 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
-				try {				
-					if (event.getSource().getTrueSource() instanceof CreeperEntity) {
+				try {
+					logMessage("handlePlayerDamage directEntity="+event.getSource().getDirectEntity());
+					if (event.getSource().getDirectEntity() instanceof Creeper) {
 						logMessage("Damaged by creeper");
 						if (mChromaInitialized) {
 							showEffect10();
@@ -463,14 +465,15 @@ public class MyForgeEventHandler extends ChromaEffects {
 		}
 		*/
 
-		LivingEntity entityLiving = event.getEntityLiving();
-
 		//avoid blocking the main thread
 		TimerTask task = new TimerTask() {
 			public void run() {
 				try {
-					if (event.getEntityLiving() instanceof PigEntity) {
-						if (event.getSource().getTrueSource() instanceof PlayerEntity) {
+					logMessage("handleLivingDeathEvent: livingEntity="+event.getEntityLiving());
+					logMessage("handleLivingDeathEvent: directEntity="+event.getSource().getDirectEntity());
+
+					if (event.getEntityLiving() instanceof Pig) {
+						if (event.getSource().getDirectEntity() instanceof Player) {
 							logMessage("Player killed pig");
 							if (mChromaInitialized) {
 								showEffect12();
@@ -481,8 +484,8 @@ public class MyForgeEventHandler extends ChromaEffects {
 								showEffect12Keypad();
 							}
 						}
-					} else if (event.getEntityLiving() instanceof ChickenEntity) {
-						if (event.getSource().getTrueSource() instanceof PlayerEntity) {
+					} else if (event.getEntityLiving() instanceof Chicken) {
+						if (event.getSource().getDirectEntity() instanceof Player) {
 							logMessage("Player killed chicken");
 							if (mChromaInitialized) {
 								showEffect15();
@@ -536,8 +539,8 @@ public class MyForgeEventHandler extends ChromaEffects {
 		}
 		*/
 
-		logMessage("handlePlayerContainerEvent: "+event.getContainer().getClass());
-		if (event.getContainer() instanceof ChestContainer) {
+		logMessage("handlePlayerContainerEvent: countainer="+event.getContainer().getClass());
+		if (event.getContainer() instanceof ChestMenu) {
 			if (event.getClass() == PlayerContainerEvent.Open.class) {
 				logMessage("Chest Opened");
 				setupChestOpen();
@@ -663,11 +666,11 @@ public class MyForgeEventHandler extends ChromaEffects {
 				// Only interested in Client thread
 				return;
 		}
-		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.DIAMOND_SWORD ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.GOLDEN_SWORD ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.IRON_SWORD ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.STONE_SWORD ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.WOODEN_SWORD){
+		if (event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.DIAMOND_SWORD ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.GOLDEN_SWORD ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.IRON_SWORD ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.STONE_SWORD ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.WOODEN_SWORD){
 			logMessage("SWORD ATTACK");
 			swordAttack();
 		}
@@ -683,11 +686,11 @@ public class MyForgeEventHandler extends ChromaEffects {
 				// Only interested in Client thread
 				return;
 		}
-		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.DIAMOND_SWORD ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.GOLDEN_SWORD ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.IRON_SWORD ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.STONE_SWORD ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.WOODEN_SWORD){
+		if (event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.DIAMOND_SWORD ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.GOLDEN_SWORD ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.IRON_SWORD ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.STONE_SWORD ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.WOODEN_SWORD){
 			logMessage("SWORD ATTACK");
 			swordAttack();
 		}
@@ -698,7 +701,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 	public void handleRightClickEmpty(PlayerInteractEvent.RightClickEmpty event) {
 		init();
 
-		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.PUFFERFISH_SPAWN_EGG) {
+		if (event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.PUFFERFISH_SPAWN_EGG) {
 			logMessage("Spawn puffer fish");
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
@@ -721,7 +724,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			return;
 		}
 
-		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.TROPICAL_FISH_SPAWN_EGG) {
+		if (event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.TROPICAL_FISH_SPAWN_EGG) {
 			logMessage("Spawn tropical fish");
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
@@ -744,9 +747,9 @@ public class MyForgeEventHandler extends ChromaEffects {
 			return;
 		}
 
-		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.POTION ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.LINGERING_POTION ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.SPLASH_POTION) {
+		if (event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.POTION ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.LINGERING_POTION ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.SPLASH_POTION) {
 			logMessage("Drinking potion");
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
@@ -782,7 +785,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			return;
 		}
 
-		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.PUFFERFISH_SPAWN_EGG){
+		if (event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.PUFFERFISH_SPAWN_EGG){
 			logMessage("Spawn puffer fish");
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
@@ -805,7 +808,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			return;
 		}
 
-		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.TROPICAL_FISH_SPAWN_EGG){
+		if (event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.TROPICAL_FISH_SPAWN_EGG){
 			logMessage("Spawn tropical fish");
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
@@ -828,9 +831,9 @@ public class MyForgeEventHandler extends ChromaEffects {
 			return;
 		}
 
-		if (event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.POTION ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.LINGERING_POTION ||
-				event.getPlayer().getHeldItem(event.getHand()).getItem() == Items.SPLASH_POTION) {
+		if (event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.POTION ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.LINGERING_POTION ||
+				event.getPlayer().getItemInHand(event.getHand()).getItem() == Items.SPLASH_POTION) {
 			logMessage("Drinking potion");
 			//avoid blocking the main thread
 			TimerTask task = new TimerTask() {
@@ -856,7 +859,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 		//avoid blocking the main thread
 		Timer timer = new Timer("Timer");
 		final BlockPos pos = event.getPos();
-		final World world = event.getWorld();
+		final Level world = event.getWorld();
 		TimerTask task = new TimerTask() {
 			public void run() {
 				try {
@@ -867,7 +870,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 						if (block == Blocks.ACACIA_DOOR || block == Blocks.BIRCH_DOOR || block == Blocks.DARK_OAK_DOOR
 								|| block == Blocks.IRON_DOOR || block == Blocks.JUNGLE_DOOR || block == Blocks.SPRUCE_DOOR
 								|| block == Blocks.OAK_DOOR) {
-								if ((boolean) stateHolder.get(BlockStateProperties.OPEN)) {
+								if ((boolean) stateHolder.getValue(BlockStateProperties.OPEN)) {
 									logMessage("Door is open");
 									playAnimationName("OpenDoor_ChromaLink.chroma", false);
 									playAnimationName("OpenDoor_Headset.chroma", false);
@@ -988,7 +991,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 				return;
 		}
 
-		mPlayerState.mPosition = new BlockPos(event.player.getPosX(), event.player.getPosY(), event.player.getPosZ());
+		mPlayerState.mPosition = new BlockPos(event.player.position().x, event.player.position().y, event.player.position().z);
 
 		if (event.player.isInWater() && !mPlayerState.mInWater) {
 			mPlayerState.mInWater = true;
@@ -1001,7 +1004,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			stopAll();
 		}
 
-		boolean isOnGround = !event.player.isAirBorne && !event.player.isSwimming();
+		boolean isOnGround = event.player.isOnGround() && !event.player.isSwimming();
 		if (isOnGround && !mPlayerState.mOnGround) {
 			mPlayerState.mOnGround = true;
 			//logMessage("Player is on ground");
@@ -1011,11 +1014,11 @@ public class MyForgeEventHandler extends ChromaEffects {
 			//logMessage("Player is not on the ground");
 		}
 
-		if (event.player.isAirBorne && !mPlayerState.mInAir) {
+		if (!event.player.isOnGround() && !mPlayerState.mInAir) {
 			mPlayerState.mInAir = true;
 			//logMessage("Player is in the air");
 		}
-		else if (!event.player.isAirBorne && mPlayerState.mInAir) {
+		else if (event.player.isOnGround() && mPlayerState.mInAir) {
 			mPlayerState.mInAir = false;
 			//logMessage("Player is not in the air");
 		}
@@ -1038,7 +1041,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			logMessage("Player is not in Lava");
 		}
 
-		if (event.player.isOnLadder() && !mPlayerState.mOnLadder) {
+		if (event.player.onClimbable() && !mPlayerState.mOnLadder) {
 			mPlayerState.mOnLadder = true;
 			logMessage("Player is on ladder");
 			TimerTask task = new TimerTask() {
@@ -1059,12 +1062,14 @@ public class MyForgeEventHandler extends ChromaEffects {
 			};
 			addChromaTask(task);
 		}
-		else if (!event.player.isOnLadder() && mPlayerState.mOnLadder) {
+		else if (!event.player.onClimbable() && mPlayerState.mOnLadder) {
 			mPlayerState.mOnLadder = false;
 			logMessage("Player is not on ladder");
 			stopAll();
 		}
 
+		// todo: uncomment
+		/*
 		if (event.player.getRidingEntity() instanceof MinecartEntity && !mPlayerState.mInMinecart)  {
 			mPlayerState.mInMinecart = true;
 			logMessage("Player is in the minecart");
@@ -1091,7 +1096,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			logMessage("Player is not in the minecart");
 			stopAll();
 		}
-
+		*/
 	}
 
 	private void setupInWater() {
