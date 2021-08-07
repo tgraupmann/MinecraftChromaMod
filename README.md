@@ -20,6 +20,8 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 * [Minecraft Forge Forums](https://forums.minecraftforge.net/)
 
+* [Minecraft Forge Documentation](https://mcforge.readthedocs.io/en/latest/)
+
 **Docs:**
 
 - [Chroma Animation Guide](http://chroma.razer.com/ChromaGuide/) - Visual examples of the Chroma Animation API methods
