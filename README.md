@@ -211,6 +211,6 @@ gradlew build
 
 **Build the installer with InnoSetup**
 
-## Support
+# Support
 
-Contact `Tim Graupmann#0611` on Discord for mod support.
+Support is available on Discord, you can reach me at `Tim Graupmann#0611`.
