@@ -223,6 +223,8 @@ gradlew runClient
 
 * Unfortunately, every minor .x release will have class name and package namespace changes that need manually merged.
 
+![image_20](images/image_20.png)
+
 * Likely there will also be minor build changes that can be copied over.
 
 * Use [Winmerge](https://winmerge.org/) or your favorite diff tool to manually merge in those changes.
