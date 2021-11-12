@@ -181,6 +181,34 @@ C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\
 
 * Make sure the path isn't too long to avoid compile errors.
 
+**Check that the MDK can build and run**
+
+* Use Start->Run, enter `cmd`, and press `OK`.
+
+```cmd```
+
+![image_12](images/image_12.png)
+
+* CD to the extracted folder Ie.
+
+```
+CD "C:\Public\forge-1.17.1-37.0.108-mdk"
+```
+
+**Generate Eclipse Project**
+
+```
+gradlew genEclipseRuns
+```
+
+**Start the mod (on the command-line)**
+
+```
+gradlew runClient
+```
+
+**Now repeat the steps to run the Chroma MOD sample**
+
 * Open a command-prompt and navigate to the project checkout folder for *this* repository. Wherever you cloned - https://github.com/tgraupmann/MinecraftChromaMod
 
 * Use Start->Run, enter `cmd`, and press `OK`.
