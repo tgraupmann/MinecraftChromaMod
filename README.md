@@ -143,6 +143,8 @@ This section is only needed to build a new mod installer or to make changes to t
 
 * You can also use [OpenJDK](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=hotspot). Use `OpenJDK 8 (LTS)`
 
+![image_9](images/image_9.png)
+
 * Set the `JAVA_HOME` environment variable to the path of the 64-bit version of the JDK. Gradle will report out of memory with the 32-bit JDK version which can be fixed in the `gradle.properties` file if you have to.
 
 The path will vary depending on the JAVA version that you install.
