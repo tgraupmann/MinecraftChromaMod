@@ -177,6 +177,21 @@ C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\
 
 * Make sure the path isn't too long to avoid compile errors.
 
+* Open a command-prompt and navigate to the project checkout folder for *this* repository. Wherever you cloned - https://github.com/tgraupmann/MinecraftChromaMod
+
+* Use Start->Run, enter `cmd`, and press `OK`.
+
+```cmd```
+
+![image_12](images/image_12.png)
+
+* CD to the checkout folder Ie.
+
+```
+CD "C:\Public\MinecraftChromaMod"
+```
+
+![image_13](images/image_13.png)
 
 **Generate Eclipse Project**
 
