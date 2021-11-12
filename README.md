@@ -213,6 +213,8 @@ gradlew genEclipseRuns
 gradlew runClient
 ```
 
+![image_18](images/image_18.png)
+
 **Now repeat the steps to run the Chroma MOD sample**
 
 * Open a command-prompt and navigate to the project checkout folder for *this* repository. Wherever you cloned - https://github.com/tgraupmann/MinecraftChromaMod
