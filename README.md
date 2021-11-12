@@ -145,7 +145,14 @@ This section is only needed to build a new mod installer or to make changes to t
 
 * Set the `JAVA_HOME` environment variable to the path of the 64-bit version of the JDK. Gradle will report out of memory with the 32-bit JDK version which can be fixed in the `gradle.properties` file if you have to.
 
-[image_8](images/image_8.png)
+The path will vary depending on the JAVA version that you install.
+
+```
+JAVA_HOME
+C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\
+```
+
+![image_8](images/image_8.png)
 
 * Install the [Eclipse IDE](https://www.eclipse.org/eclipseide/)
 
