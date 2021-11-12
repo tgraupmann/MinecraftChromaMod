@@ -164,12 +164,16 @@ C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\
 
 * Make sure you do both for the Minecraft Forge handshake to work.
 
-* That means double-click `forge-1.16.3-34.1.0-installer.jar` and use the UI to install both.
+* That means double-click `forge-1.17.1-37.0.108-installer.jar` and use the UI to install both.
+
+![image_10](images/image_10.png)
+
+![image_11](images/image_11.png)
 
 **Get the mod**
 
 * Download and extract to a folder like:
-```C:\Minecraft\forge-1.16.3-34.1.0-mdk```
+```C:\Minecraft\forge-1.17.1-37.0.108-mdk```
 
 * Make sure the path isn't too long to avoid compile errors.
 
