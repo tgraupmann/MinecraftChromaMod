@@ -215,6 +215,22 @@ gradlew runClient
 
 ![image_18](images/image_18.png)
 
+## Manually Merge Changes
+
+* With a properly setup developer environment that can compile MCF mods, now we need to make sure the Chroma Mod has the latest updates.
+
+* Compare the `MDK` changes with the `MinecraftChromaMod`
+
+* Unfortunately, every minor .x release will have class name and package namespace changes that need manually merged.
+
+* Likely there will also be minor build changes that can be copied over.
+
+* Use [Winmerge](https://winmerge.org/) or your favorite diff tool to manually merge in those changes.
+
+![image_19](images/image_19.png)
+
+* With all the changes merged, you can continue to build the Chroma mod.
+
 **Now repeat the steps to run the Chroma MOD sample**
 
 * Open a command-prompt and navigate to the project checkout folder for *this* repository. Wherever you cloned - https://github.com/tgraupmann/MinecraftChromaMod
