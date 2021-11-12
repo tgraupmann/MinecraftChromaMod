@@ -174,7 +174,7 @@ C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\
 
 * Download the Minecraft Forge [https://files.minecraftforge.net/net/minecraftforge/forge/](MDK)
 
-![image_13](images/image_13.png)
+![image_14](images/image_14.png)
 
 * Extract the MDK to a folder like:
 ```C:\Minecraft\forge-1.17.1-37.0.108-mdk```
