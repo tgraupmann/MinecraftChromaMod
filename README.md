@@ -179,6 +179,8 @@ C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\
 * Extract the MDK to a folder like:
 ```C:\Public\forge-1.17.1-37.0.108-mdk```
 
+![image_15](images/image_15.png)
+
 * Make sure the path isn't too long to avoid compile errors.
 
 **Check that the MDK can build and run**
