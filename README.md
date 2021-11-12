@@ -177,7 +177,7 @@ C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\
 ![image_14](images/image_14.png)
 
 * Extract the MDK to a folder like:
-```C:\Minecraft\forge-1.17.1-37.0.108-mdk```
+```C:\Public\forge-1.17.1-37.0.108-mdk```
 
 * Make sure the path isn't too long to avoid compile errors.
 
