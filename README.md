@@ -197,6 +197,8 @@ C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\
 CD "C:\Public\forge-1.17.1-37.0.108-mdk"
 ```
 
+![image_16](images/image_16.png)
+
 **Generate Eclipse Project**
 
 ```
