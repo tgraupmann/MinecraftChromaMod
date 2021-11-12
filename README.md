@@ -205,6 +205,8 @@ CD "C:\Public\forge-1.17.1-37.0.108-mdk"
 gradlew genEclipseRuns
 ```
 
+![image_17](images/image_17.png)
+
 **Start the mod (on the command-line)**
 
 ```
