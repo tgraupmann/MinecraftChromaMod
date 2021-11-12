@@ -225,6 +225,8 @@ gradlew runClient
 
 ![image_20](images/image_20.png)
 
+![image_21](images/image_21.png)
+
 * Likely there will also be minor build changes that can be copied over.
 
 * Use [Winmerge](https://winmerge.org/) or your favorite diff tool to manually merge in those changes.
