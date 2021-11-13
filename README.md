@@ -74,6 +74,8 @@ java -Xmx4096M -jar forge-1.16.4-35.1.13.jar nogui
 
 * Connect to Minecraft dedicated servers using port: `25565`.
 
+![image_24](images/image_24.png)
+
 
 ## Chroma Effects ##
 
