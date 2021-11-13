@@ -143,11 +143,15 @@ java -Xmx4096M -jar forge-1.16.4-35.1.13.jar nogui
 
 This section is only needed to build a new mod installer or to make changes to the mod.
 
-* Install [JDK 1.8 or better](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* Install [JDK 16 or better](https://www.oracle.com/java/technologies/downloads/)
 
-* You can also use [OpenJDK](https://adoptopenjdk.net/?variant=openjdk8&jvmVariant=hotspot). Use `OpenJDK 8 (LTS)`
+* You can also use [OpenJDK](https://adoptium.net/?variant=openjdk16). Use `Latest release jdk-16.2+7` or better.
 
 ![image_9](images/image_9.png)
+
+* The installer can set the JAVA_HOME for you.
+
+![image_23](images/image_23.png)
 
 * Set the `JAVA_HOME` environment variable to the path of the 64-bit version of the JDK. Gradle will report out of memory with the 32-bit JDK version which can be fixed in the `gradle.properties` file if you have to.
 
@@ -155,7 +159,7 @@ The path will vary depending on the JAVA version that you install.
 
 ```
 JAVA_HOME
-C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\
+C:\Program Files\Eclipse Foundation\jdk-16.0.2.7-hotspot\
 ```
 
 ![image_8](images/image_8.png)
