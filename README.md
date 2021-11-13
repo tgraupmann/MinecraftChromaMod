@@ -60,14 +60,14 @@ The client mod with Chroma will be allowed because the `modid` matches on server
 
 ```
 CD %appdata%\.minecraft
-java -Xmx4096M -jar forge-1.16.4-35.1.13.jar nogui
+CALL java -Xmx4096M -jar libraries\net\minecraft\server\1.17.1\server-1.17.1.jar nogui
 ```
 
 * Or put a batch file in your `.minecraft` folder to start the server.
 
 **run_minecraft_server.cmd**
 ```
-java -Xmx4096M -jar forge-1.16.4-35.1.13.jar nogui
+CALL java -Xmx4096M -jar libraries\net\minecraft\server\1.17.1\server-1.17.1.jar nogui
 ```
 
 * The server will not be able to run the client mod. So you'll want to uninstall the client mod on the server and install the server mod on the server.
