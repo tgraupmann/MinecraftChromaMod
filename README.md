@@ -172,7 +172,7 @@ C:\Program Files\AdoptOpenJDK\jdk-8.0.252.09-hotspot\
 
 **Get the mod**
 
-* Download the Minecraft Forge [https://files.minecraftforge.net/net/minecraftforge/forge/](MDK)
+* Download the Minecraft Forge [MDK](https://files.minecraftforge.net/net/minecraftforge/forge/)
 
 ![image_14](images/image_14.png)
 
