@@ -42,6 +42,10 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 ## Quick Start ##
 
+* You may need to migrate your account to a Microsoft Account in order to update the launcher to install 1.17.1.
+
+![image_22](images/image_22.png)
+
 * Visit the [Releases Section](https://github.com/tgraupmann/MinecraftChromaMod/releases) to run the installers.
 
 * Use the Minecraft Forge Universal Installer for client and server
