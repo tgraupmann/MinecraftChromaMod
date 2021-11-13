@@ -54,6 +54,12 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 * Use the mod installer that matches the Minecraft Forge version
 
+* To run a local Minecraft server modify the `%APPDATA%\.minecraft\eula.txt` to accept.
+
+```
+eula=true
+```
+
 * To run Minecraft as a dedicated server and use Chroma on the clients, install the [server mod](https://github.com/tgraupmann/MinecraftChromaModServer/releases) on the server.
 
 The client mod with Chroma will be allowed because the `modid` matches on server and client.
