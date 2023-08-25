@@ -6,6 +6,9 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 `JChromaSDK` is able to play Razer Chroma animations from the [Project Resources](https://github.com/tgraupmann/MinecraftChromaMod/tree/master/src/main/resources/Animations).
 
+# Latest
+
+* [GamingWave](https://github.com/GamingWave) added support for (MinecraftForge 47.1.0 MInecraft: 1.20.1) on a [fork](https://github.com/GamingWave/ChromaMod).
 
 ## Table of Contents
 
