@@ -1,16 +1,10 @@
 package com.example.examplemod;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-
 import com.razer.java.JAppInfoType;
 import com.razer.java.JChromaSDK;
-
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.PauseScreen;
 import net.minecraft.client.gui.screens.Screen;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.entity.animal.Pig;
@@ -25,8 +19,8 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateHolder;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraftforge.client.event.GuiScreenEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+import net.minecraftforge.client.event.ScreenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.TickEvent.PlayerTickEvent;
@@ -37,10 +31,16 @@ import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
+import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.event.server.ServerStoppingEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fmlserverevents.FMLServerStartingEvent;
-import net.minecraftforge.fmlserverevents.FMLServerStoppingEvent;
+import net.minecraftforge.fml.loading.targets.FMLServerDevLaunchHandler;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MyForgeEventHandler extends ChromaEffects {
 
@@ -260,15 +260,14 @@ public class MyForgeEventHandler extends ChromaEffects {
 		addChromaTask(task);
 	}
 
-
 	@SubscribeEvent
-	public void handleStart(FMLServerStartingEvent event) {
+	public void handleStart(ServerStartingEvent event) {
 		init();
 	}
 
 
 	@SubscribeEvent
-	public void handleStop(FMLServerStoppingEvent event) {
+	public void handleStop(ServerStoppingEvent event) {
 		uninit();
 	}
 	
@@ -276,10 +275,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 	private Minecraft _mMinecraft = null;
 	
 	@SubscribeEvent
-	public void handleMainMenu(GuiScreenEvent.InitGuiEvent event) {
+	public void handleMainMenu(ScreenEvent.InitScreenEvent event) {
 		init();
 		if (mChromaInitialized) {
-			Screen gui = event.getGui();
+			Screen gui = event.getScreen();
 			if (null != gui) {
 				_mMinecraft = gui.getMinecraft();
 				//logMessage("handleMainMenu gui="+gui);
@@ -314,7 +313,6 @@ public class MyForgeEventHandler extends ChromaEffects {
 			}
 		}
 	}
-
 
 	@SubscribeEvent
 	public void handlePlaceBlock(BlockEvent.EntityPlaceEvent event) {
@@ -1068,7 +1066,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 			stopAll();
 		}
 
-		// todo: uncomment
+		//TODO: uncomment
 		/*
 		if (event.player.getRidingEntity() instanceof MinecartEntity && !mPlayerState.mInMinecart)  {
 			mPlayerState.mInMinecart = true;
