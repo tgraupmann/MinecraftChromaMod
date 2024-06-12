@@ -147,6 +147,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 			if (result == 0) {
 				mChromaInitialized = true;
 				logMessage("*****Initialized ChromaSDK!");
+
+				// Use manual haptics
+				sChromaAnimationAPI.useForwardChromaEvents(false);
+				
 			} else {
 				logError("******* Failed to initialize ChromaSDK! error="+result);
 				mChromaInitialized = false;
@@ -285,6 +289,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 				//logMessage("handleMainMenu gui="+gui);
 				if (gui instanceof PauseScreen) {
 					//logMessage("Main Menu Open");
+
+					// Trigger Haptic Effect
+					sChromaAnimationAPI.coreSetEventName("MainMenuOpen");
+
 					showEffectMainMenu();
 					showEffectMainMenuChromaLink();
 					showEffectMainMenuHeadset();
@@ -303,7 +311,11 @@ public class MyForgeEventHandler extends ChromaEffects {
 		if (null != _mMinecraft && null != _mMinecraft.screen) {
 			//logMessage("handleScreenEvent screen="+_mMinecraft.screen);
 			if (mChromaInitialized && _mWasPaused && !(_mMinecraft.screen instanceof PauseScreen)) {
-				//logMessage("Main Menu Closed");						
+				//logMessage("Main Menu Closed");
+				
+				// Trigger Haptic Effect
+				sChromaAnimationAPI.coreSetEventName("MenuClosed");
+
 		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_ChromaLink.chroma");
 		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Headset.chroma");
 		        sChromaAnimationAPI.stopAnimationName(getAnimationPath()+"Rainbow_Keyboard.chroma");
@@ -335,6 +347,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 			public void run() {
 				try {
 					if (mChromaInitialized) {
+
+						// Trigger Haptic Effect
+						sChromaAnimationAPI.coreSetEventName("BlockPlaced");
+
 						showEffect4();
 						showEffect4ChromaLink();
 						showEffect4Headset();
@@ -367,6 +383,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 			public void run() {
 				try {
 					if (mChromaInitialized) {
+
+						// Trigger Haptic Effect
+						sChromaAnimationAPI.coreSetEventName("ItemCrafted");
+
 						showEffect7();
 						showEffect7ChromaLink();
 						showEffect7Headset();
@@ -404,6 +424,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 					if (event.getSource().getDirectEntity() instanceof Creeper) {
 						logMessage("Damaged by creeper");
 						if (mChromaInitialized) {
+
+							// Trigger Haptic Effect
+							sChromaAnimationAPI.coreSetEventName("DamageByCreeper");
+
 							showEffect10();
 							showEffect10ChromaLink();
 							showEffect10Headset();
@@ -437,6 +461,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 			public void run() {
 				try {
 					if (mChromaInitialized) {
+
+						// Trigger Haptic Effect
+						sChromaAnimationAPI.coreSetEventName("ShotArrow");
+
 						showEffect5();
 						showEffect5ChromaLink();
 						showEffect5Headset();
@@ -476,6 +504,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 						if (event.getSource().getDirectEntity() instanceof Player) {
 							logMessage("Player killed pig");
 							if (mChromaInitialized) {
+
+								// Trigger Haptic Effect
+								sChromaAnimationAPI.coreSetEventName("KilledPig");
+
 								showEffect12();
 								showEffect12ChromaLink();
 								showEffect12Headset();
@@ -488,6 +520,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 						if (event.getSource().getDirectEntity() instanceof Player) {
 							logMessage("Player killed chicken");
 							if (mChromaInitialized) {
+
+								// Trigger Haptic Effect
+								sChromaAnimationAPI.coreSetEventName("KilledChicken");
+
 								showEffect15();
 								showEffect15ChromaLink();
 								showEffect15Headset();
@@ -511,6 +547,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 			public void run() {
 				try {
 					if (mChromaInitialized) {
+						
+						// Trigger Haptic Effect
+						sChromaAnimationAPI.coreSetEventName("ChestOpen");
+
 						showEffect13();
 						showEffect13ChromaLink();
 						showEffect13Headset();
@@ -557,6 +597,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 			public void run() {
 				try {
 					if (mChromaInitialized) {
+
+						// Trigger Haptic Effect
+						sChromaAnimationAPI.coreSetEventName("DoorClosed");
+
 						String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
 						String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
 						sChromaAnimationAPI.closeAnimationName(baseLayer);
@@ -598,6 +642,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 			public void run() {
 				try {
 					if (mChromaInitialized) {
+
+						// Trigger Haptic Effect
+						sChromaAnimationAPI.coreSetEventName("DoorOpen");
+
 						String baseLayer = getAnimationPath() + "Blank_Keyboard.chroma";
 						String layer2 = getAnimationPath() + "Block4_Keyboard.chroma";
 						sChromaAnimationAPI.closeAnimationName(baseLayer);
@@ -641,6 +689,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 			public void run() {
 				try {
 					if (mChromaInitialized) {
+
+						// Trigger Haptic Effect
+						sChromaAnimationAPI.coreSetEventName("SwordAttack");
+
 						showEffect3();
 						showEffect3ChromaLink();
 						showEffect3Headset();
@@ -708,6 +760,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 				public void run() {
 					try {					
 						if (mChromaInitialized) {
+
+							// Trigger Haptic Effect
+							sChromaAnimationAPI.coreSetEventName("FishPufferfishSpawned");
+
 							showEffect17();
 							showEffect17ChromaLink();
 							showEffect17Headset();
@@ -731,6 +787,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 				public void run() {
 					try {
 						if (mChromaInitialized) {
+
+							// Trigger Haptic Effect
+							sChromaAnimationAPI.coreSetEventName("FishTropicalSpawned");
+
 							showEffect18();
 							showEffect18ChromaLink();
 							showEffect18Headset();
@@ -756,6 +816,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 				public void run() {
 					try {
 						if (mChromaInitialized) {
+
+							// Trigger Haptic Effect
+							sChromaAnimationAPI.coreSetEventName("PotionDrink");
+
 							showEffect14();
 							showEffect14ChromaLink();
 							showEffect14Headset();
@@ -792,6 +856,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 				public void run() {
 					try {
 						if (mChromaInitialized) {
+
+							// Trigger Haptic Effect
+							sChromaAnimationAPI.coreSetEventName("PUFFERFISH_SPAWN_EGG");
+
 							showEffect17();
 							showEffect17ChromaLink();
 							showEffect17Headset();
@@ -815,6 +883,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 				public void run() {
 					try {
 						if (mChromaInitialized) {
+
+							// Trigger Haptic Effect
+							sChromaAnimationAPI.coreSetEventName("TROPICAL_FISH_SPAWN_EGG");
+
 							showEffect18();
 							showEffect18ChromaLink();
 							showEffect18Headset();
@@ -840,6 +912,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 				public void run() {
 					try {
 						if (mChromaInitialized) {
+
+							// Trigger Haptic Effect
+							sChromaAnimationAPI.coreSetEventName("PotionDrink");
+
 							showEffect14();
 							showEffect14ChromaLink();
 							showEffect14Headset();
@@ -928,6 +1004,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 				public void run() {
 					try {
 						if (mChromaInitialized) {
+
+							// Trigger Haptic Effect
+							sChromaAnimationAPI.coreSetEventName("EnvironmentRain");
+
 							showEffect22();
 							showEffect22ChromaLink();
 							showEffect22Headset();
@@ -957,6 +1037,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 				public void run() {
 					try {
 						if (mChromaInitialized) {
+
+							// Trigger Haptic Effect
+							sChromaAnimationAPI.coreSetEventName("EnvironmentSnow");
+
 							showEffect21();
 							showEffect21ChromaLink();
 							showEffect21Headset();
@@ -1048,6 +1132,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 				public void run() {
 					try {
 						if (mChromaInitialized) {
+
+							// Trigger Haptic Effect
+							sChromaAnimationAPI.coreSetEventName("PlayerLadder");
+
 							showEffect9();
 							showEffect9ChromaLink();
 							showEffect9Headset();
@@ -1105,6 +1193,10 @@ public class MyForgeEventHandler extends ChromaEffects {
 			public void run() {
 				try {
 					if (mChromaInitialized) {
+
+						// Trigger Haptic Effect
+						sChromaAnimationAPI.coreSetEventName("EnvironmentWater");
+
 						showEffect11();
 						showEffect11ChromaLink();
 						showEffect11Headset();
