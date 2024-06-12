@@ -751,7 +751,7 @@ interface JChromaLib extends Library {
 	Direct access to low level API.
 	*/
 	/// EXPORT_API RZRESULT PluginCoreSetEventName(LPCTSTR Name);
-	int PluginCoreSetEventName(String name);
+	int PluginCoreSetEventName(byte[] bytes);
 	/*
 	Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
 	Intended for Cloud Gaming Platforms, restore the streaming key when the 

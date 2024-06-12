@@ -1,10 +1,10 @@
 package com.razer.java;
 
-import com.sun.jna.Native;
-import com.sun.jna.Pointer;
-
+import java.nio.charset.StandardCharsets;
 import org.jglr.jchroma.devices.DeviceInfos;
 import org.jglr.jchroma.devices.GUIDStruct;
+import com.sun.jna.Native;
+import com.sun.jna.Pointer;
 
 /**
  * Entry point of the API, allows to create effects for the device and query Razer devices
@@ -1158,9 +1158,21 @@ public class JChromaSDK {
 	Direct access to low level API.
 	*/
 	/// EXPORT_API RZRESULT PluginCoreSetEventName(LPCTSTR Name);
-	public int coreSetEventName(String Name)
+	public int coreSetEventName(String name)
 	{
-		return wrapper.PluginCoreSetEventName(Name);
+		if (name == null || name.length() == 0)
+		{
+			return wrapper.PluginCoreSetEventName(new byte[] { 0, 0 });
+		} else {
+			byte[] bytes = name.getBytes(StandardCharsets.UTF_16LE);
+
+			// add a null terminator
+			byte[] nullTerminatedBytes = new byte[bytes.length + 2];
+			System.arraycopy(bytes, 0, nullTerminatedBytes, 0, bytes.length);
+			nullTerminatedBytes[bytes.length] = 0;
+			nullTerminatedBytes[bytes.length + 1] = 0;
+			return wrapper.PluginCoreSetEventName(nullTerminatedBytes);
+		}
 	}
 	/*
 	Begin broadcasting Chroma RGB data using the stored stream key as the endpoint. 
