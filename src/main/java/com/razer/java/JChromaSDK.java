@@ -1160,7 +1160,7 @@ public class JChromaSDK {
 	/// EXPORT_API RZRESULT PluginCoreSetEventName(LPCTSTR Name);
 	public int coreSetEventName(String name)
 	{
-		if (name == null || name.length() == 0)
+		if (name == null)
 		{
 			return wrapper.PluginCoreSetEventName(new byte[] { 0, 0 });
 		} else {

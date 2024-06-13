@@ -150,7 +150,7 @@ public class MyForgeEventHandler extends ChromaEffects {
 
 				// Use manual haptics
 				sChromaAnimationAPI.useForwardChromaEvents(false);
-				
+
 			} else {
 				logError("******* Failed to initialize ChromaSDK! error="+result);
 				mChromaInitialized = false;
@@ -290,8 +290,8 @@ public class MyForgeEventHandler extends ChromaEffects {
 				if (gui instanceof PauseScreen) {
 					//logMessage("Main Menu Open");
 
-					// Trigger Haptic Effect
-					sChromaAnimationAPI.coreSetEventName("MainMenuOpen");
+					// Stop Haptic Effects
+					sChromaAnimationAPI.coreSetEventName("");
 
 					showEffectMainMenu();
 					showEffectMainMenuChromaLink();
@@ -1086,6 +1086,9 @@ public class MyForgeEventHandler extends ChromaEffects {
 			mPlayerState.mInWater = false;
 			logMessage("Player is not in Water");
 			stopAll();
+			
+			// Trigger Haptic Effect OFF
+			sChromaAnimationAPI.coreSetEventName("EnvironmentWater_OFF");			
 		}
 
 		boolean isOnGround = event.player.isOnGround() && !event.player.isSwimming();
@@ -1194,8 +1197,8 @@ public class MyForgeEventHandler extends ChromaEffects {
 				try {
 					if (mChromaInitialized) {
 
-						// Trigger Haptic Effect
-						sChromaAnimationAPI.coreSetEventName("EnvironmentWater");
+						// Trigger Haptic Effect ON
+						sChromaAnimationAPI.coreSetEventName("EnvironmentWater_ON");
 
 						showEffect11();
 						showEffect11ChromaLink();
