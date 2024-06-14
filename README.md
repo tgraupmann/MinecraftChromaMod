@@ -29,6 +29,8 @@ This Mod is built with [MinecraftForge](https://minecraftforge.net) and displays
 
 - [Chroma Animation Guide](http://chroma.razer.com/ChromaGuide/) - Visual examples of the Chroma Animation API methods
 
+- [Java SDK - Chroma Animation Sample App](https://github.com/razerofficial/Java_ChromaSampleApp) - Java port of the effects from the [Chroma Animation Guide](http://chroma.razer.com/ChromaGuide/)
+
 **Mods:**
 
 - [MinecraftChromaMod](https://github.com/tgraupmann/MinecraftChromaMod) - Minecraft Chroma RGB Mod
